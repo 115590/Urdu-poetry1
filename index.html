@@ -1,560 +1,281 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="ur">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اردو شاعری - Urdu Poetry</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    <title>اردو شاعری  </title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
     <style>
-        /* Custom styles for Noto Nastaliq Urdu font and Inter for English/UI */
         body {
-            font-family: 'Inter', sans-serif; /* Default for UI elements and English text */
-            background-color: #f8f8f8; /* Light gray background */
-            color: #333; /* Dark gray text */
-        }
-        .urdu-text {
-            font-family: 'Noto Nastaliq Urdu', serif; /* Specifically for Urdu poetry */
-            line-height: 2.2; /* Increased line height for better readability of Urdu script */
-            font-size: 1.3rem; /* Slightly larger font size for poetry */
-            text-align: right; /* Right-to-left alignment for Urdu */
-        }
-        .ghazal-title {
-            font-family: 'Noto Nastaliq Urdu', serif;
-            font-size: 2rem;
-            font-weight: 700;
+            font-family: 'Noto Nastaliq Urdu', sans-serif;
+            background: linear-gradient(to right, #f4f1de, #e07a5f);
+            margin: 0;
+            padding: 0;
+            direction: rtl;
             text-align: center;
-            margin-bottom: 1.5rem;
-            color: #2a6f5e; /* Darker teal for titles */
         }
-        .sher {
-            margin-bottom: 1rem;
+        header {
+            background: #2d3142;
+            color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        nav a {
+            color: #f4f1de;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        nav a:hover {
+            color: #e07a5f;
+        }
+        .poetry-container {
             display: flex;
-            flex-direction: column;
-            align-items: flex-end; /* Align couplets to the right */
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
         }
-        .misra {
-            width: 100%; /* Ensure each line takes full width for alignment */
+        .poetry-card {
+            background: white;
+            width: 300px;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
         }
-        .container {
-            max-width: 900px;
+        .poetry-card:hover {
+            transform: scale(1.05);
         }
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .urdu-text {
-                font-size: 1.1rem;
-            }
-            .ghazal-title {
-                font-size: 1.75rem;
+        .poetry-card h3 {
+            color: #2d3142;
+            font-size: 1.5em;
+        }
+        .poetry-card p {
+            color: #4a4e69;
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+        footer {
+            background: #2d3142;
+            color: white;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        @media (max-width: 600px) {
+            .poetry-card {
+                width: 100%;
             }
         }
     </style>
 </head>
-<body class="antialiased">
-    <div class="container mx-auto p-4 sm:p-6 lg:p-8 bg-white shadow-lg rounded-lg my-8">
-        <header class="text-center mb-10">
-            <h1 class="text-5xl font-extrabold text-teal-700 mb-4 urdu-text" style="font-size: 3.5rem;">اردو شاعری</h1>
-            <p class="text-xl text-gray-600 urdu-text">دلچسپ اور خوبصورت اردو شاعری کا مجموعہ</p>
-            <p class="text-xl text-gray-600">A Collection of Engaging and Beautiful Urdu Poetry</p>
-        </header>
-
-        <nav class="mb-8 p-4 bg-teal-100 rounded-lg flex flex-col sm:flex-row justify-between items-center">
-            <input type="text" placeholder="شاعر یا غزل تلاش کریں..." class="p-3 rounded-md border border-teal-300 focus:outline-none focus:ring-2 focus:ring-teal-500 w-full sm:w-1/2 mb-4 sm:mb-0 urdu-text text-right" style="direction: rtl;">
-            <button class="bg-teal-600 text-white px-6 py-3 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 w-full sm:w-auto">تلاش کریں</button>
+<body>
+    <header>
+        <h1>اردو شاعری  </h1>
+        <nav>
+            <a href="#home">ہوم</a>
+            <a href="#poets">شاعر</a>
+            <a href="wa.me+923001881920">ہمارے بارے میں</a>
         </nav>
+    </header>
 
-        <section class="space-y-12">
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: مرزا غالب</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">ہزاروں خواہشیں ایسی کہ ہر خواہش پہ دم نکلے</p>
-                        <p class="misra">بہت نکلے مرے ارمان لیکن پھر بھی کم نکلے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">ڈرے کیوں میرا قاتل کیا رہے گا اس کی گردن پر</p>
-                        <p class="misra">وہ خوں جو چشمِ تر سے عمر بھر یوں دم بدم نکلے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">نکلنا خلد سے آدم کا سنتے آئے ہیں لیکن</p>
-                        <p class="misra">بہت بے آبرو ہو کر ترے کوچے سے ہم نکلے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">محبت میں نہیں ہے فرق جینے اور مرنے کا</p>
-                        <p class="misra">اسی کو دیکھ کر جیتے ہیں جس کافر پہ دم نکلے</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: علامہ اقبال</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">ستاروں سے آگے جہاں اور بھی ہیں</p>
-                        <p class="misra">ابھی عشق کے امتحاں اور بھی ہیں</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">تہی زندگی سے نہیں یہ فضائیں</p>
-                        <p class="misra">یہاں سینکڑوں کارواں اور بھی ہیں</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">قناعت نہ کر عالمِ رنگ و بو پر</p>
-                        <p class="misra">چمن اور بھی آشیاں اور بھی ہیں</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">اگر کھو گیا اک نشیمن تو کیا غم</p>
-                        <p class="misra">مقاماتِ آہ و فغاں اور بھی ہیں</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: فیض احمد فیض</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">گلوں میں رنگ بھرے بادِ نوبہار چلے</p>
-                        <p class="misra">چلے بھی آؤ کہ گلشن کا کاروبار چلے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">قفس اداس ہے یارو صبا سے کچھ تو کہو</p>
-                        <p class="misra">کہیں تو بہرِ خدا آج ذکرِ یار چلے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">کبھی تو صبح ترے کنجِ لب سے ہو آغاز</p>
-                        <p class="misra">کبھی تو شب سرِ کاکل سے مشکبار چلے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">بڑا ہے درد کا رشتہ یہ دل غریب سہی</p>
-                        <p class="misra">تمہارے نام پہ آئیں گے غمگسار چلے</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: احمد فراز</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">رنجش ہی سہی دل ہی دکھانے کے لیے آ</p>
-                        <p class="misra">آ پھر سے مجھے چھوڑ کے جانے کے لیے آ</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">پہلے سے مراسم نہ سہی پھر بھی کبھی تو</p>
-                        <p class="misra">رسْم و رہِ دنیا ہی نبھانے کے لیے آ</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">کس کس کو بتائیں گے تمنائے سفر ہم</p>
-                        <p class="misra">بیٹھے ہیں ترے پاس ٹھکانے کے لیے آ</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">ہر بار جدائی کا سبب ڈھونڈتا ہوں میں</p>
-                        <p class="misra">اب تو مجھے بس چھوڑ کے جانے کے لیے آ</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: پروین شاکر</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">کُو بہ کُو پھیل گئی بات شناسائی کی</p>
-                        <p class="misra">اس نے خوشبو کی طرح میری پذیرائی کی</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">کیسے کہہ دوں کہ مجھے چھوڑ دیا ہے اس نے</p>
-                        <p class="misra">بات تو سچ ہے مگر بات ہے رسوائی کی</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">وہ کہیں بھی گیا لوٹا تو مرے پاس آیا</p>
-                        <p class="misra">بس یہی بات ہے اچھی مرے ہرجائی کی</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">اس سے پہلے کہ کوئی اور کرے رسوا مجھے</p>
-                        <p class="misra">آؤ لے جاؤ تم اپنی یہ امانت مجھ سے</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: جون ایلیا</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">کیا بتائیں کہ دلِ بے تاب پہ کیا گزری ہے</p>
-                        <p class="misra">شامِ ہجراں ہے مگر خواب پہ کیا گزری ہے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">ایک ہی بار یہ سب کچھ تو نہیں ہوتا تھا</p>
-                        <p class="misra">اب جو گزری ہے وہ اس باب پہ کیا گزری ہے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">ہم تو سمجھے تھے کہ اک زخم ہے بھر جائے گا</p>
-                        <p class="misra">کیا خبر تھی کہ رگِ جاں میں اتر جائے گا</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">جو بھی آیا وہ اپنی دھن میں چلا جاتا ہے</p>
-                        <p class="misra">کوئی پوچھو تو سہی تاب پہ کیا گزری ہے</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: ناصر کاظمی</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">دل میں اک لہر سی اٹھی ہے ابھی</p>
-                        <p class="misra">کوئی تازہ ہوا چلی ہے ابھی</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">شور برپا ہے خانۂ دل میں</p>
-                        <p class="misra">کوئی دیوار سی گری ہے ابھی</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">بھری دنیا میں جی نہیں لگتا</p>
-                        <p class="misra">جانے کس چیز کی کمی ہے ابھی</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">یاد کے بے نشاں جزیروں سے</p>
-                        <p class="misra">تیری آواز آ رہی ہے ابھی</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: قتیل شفائی</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">بات کرنی مجھے مشکل کبھی ایسی تو نہ تھی</p>
-                        <p class="misra">جیسی اب ہے تری محفل کبھی ایسی تو نہ تھی</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">آنکھیں دکھلاتا ہے وہ غیروں کو</p>
-                        <p class="misra">مجھ سے پہلے تو یہ عادت کبھی ایسی تو نہ تھی</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">اب ترا ذکر بھی شاید نہ کرے دیوانہ</p>
-                        <p class="misra">اس کی حالت کبھی ایسی تو نہ تھی</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">دل جو بیدادِ محبت سے ستم سہتا ہے</p>
-                        <p class="misra">اس کی طاقت کبھی ایسی تو نہ تھی</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: وصی شاہ</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">مجھے تم یاد آتے ہو</p>
-                        <p class="misra">بہت ہی یاد آتے ہو</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">کسی بھی موڑ پر جب بھی</p>
-                        <p class="misra">کوئی بھی غم ستاتا ہے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">تمہاری یاد آتی ہے</p>
-                        <p class="misra">مجھے تم یاد آتے ہو</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">یہ کیسا رشتہ ہے اپنا</p>
-                        <p class="misra">جو ٹوٹا بھی نہیں ہے</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: محسن نقوی</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">بچھڑ کے تجھ سے نہ دیکھا گیا کسی کا ملاپ</p>
-                        <p class="misra">اڑا دیے ہیں پرندے شجر پہ بیٹھے ہوئے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">میں اس کی یاد میں اکثر اداس رہتا ہوں</p>
-                        <p class="misra">وہ میری یاد میں اکثر اداس رہتا ہے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">مجھ سے بچھڑ کر وہ بھی روئے گا عمر بھر</p>
-                        <p class="misra">میں نے اسے بھی اپنی طرح بے قرار کیا</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">یہ جو دیوار سی ہے میرے اور اس کے بیچ</p>
-                        <p class="misra">یہ محبت کی ہے یا نفرت کی ہے</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: میر تقی میر</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">پتا پتا بوٹا بوٹا حال ہمارا جانے ہے</p>
-                        <p class="misra">جانے نہ جانے گل ہی نہ جانے باغ تو سارا جانے ہے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">عاشق تو مرا ہے پر کس کا</p>
-                        <p class="misra">عشق کا یارو جانے ہے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">آہ جو دل سے نکلی ہے</p>
-                        <p class="misra">اس کا اثر تو جانے ہے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">میرؔ ان نیم باز آنکھوں میں</p>
-                        <p class="misra">ساری مستی شراب کی سی ہے</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: داغ دہلوی</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">تمہارے خط میں نیا ایک سلام کس کا تھا</p>
-                        <p class="misra">نہ تھا رقیب تو آخر وہ نام کس کا تھا</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">وفا کریں گے نباہیں گے بات مانیں گے</p>
-                        <p class="misra">تمہیں بھی یاد ہے کچھ یہ کلام کس کا تھا</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">تمہارے دستِ ستم میں مجھے خبر ہے داغ</p>
-                        <p class="misra">نہ تھا یہ ہاتھ تو پھر یہ نشان کس کا تھا</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">ہوئے ہیں خوب وہ بدنام ہم سے مل کر داغ</p>
-                        <p class="misra">یہ کام کس کا تھا یہ انتظام کس کا تھا</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: مرزا غالب (ایک اور)</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">بازیچۂ اطفال ہے دنیا مرے آگے</p>
-                        <p class="misra">ہوتا ہے شب و روز تماشا مرے آگے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">اک کھیل ہے اورنگِ سلیماں مرے نزدیک</p>
-                        <p class="misra">اک بات ہے اعجازِ مسیحا مرے آگے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">جز نام نہیں صورتِ مشتاقِ وجود</p>
-                        <p class="misra">ہر چند کہ ہے پردہ میں وہ جلوہ مرے آگے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">مجھ سے پہلے کی محبت میں وہ محبوب نہ تھا</p>
-                        <p class="misra">جو تجھے دیکھ کے دل سے نہ اتر جائے گا</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: احمد ندیم قاسمی</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">چاندنی رات میں ہر شخص کو دیکھا ہے اداس</p>
-                        <p class="misra">کون کہتا ہے کہ تنہا مجھے رونا آیا</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">یہ جو ہم ہجر میں دیوار سے لگ کر بیٹھے</p>
-                        <p class="misra">اس کی تصویر تو ہم نے بھی بنائی ہوگی</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">ہم نے ہر رنگ میں دیکھا ہے اسے</p>
-                        <p class="misra">وہ جو ہر رنگ میں ڈھل جاتا ہے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">کبھی تو آؤ کہ ہم تم کو گلے لگا لیں</p>
-                        <p class="misra">یہ عمر بھر کی جدائی ہمیں رلائے گی</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: امجد اسلام امجد</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">اے خدا آج یہ فیصلہ کر دے</p>
-                        <p class="misra">میں نہیں یا مرا انتظار نہیں</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">تو نے دیکھا ہے کبھی ایک نظر شام کے بعد</p>
-                        <p class="misra">کتنے چپ چاپ سے لگتے ہیں شجر شام کے بعد</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">ہم نے دیکھا ہے اسے شام کے بعد</p>
-                        <p class="misra">جب بھی دیکھا ہے اسے شام کے بعد</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">ایک ہی بات زمانے کی کتابوں میں نہیں</p>
-                        <p class="misra">جو مجھے تجھ سے محبت ہے وہ خوابوں میں نہیں</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: ساغر صدیقی</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">زندگی جبرِ مسلسل کی طرح کاٹی ہے</p>
-                        <p class="misra">جانے کس جرم کی پائی ہے سزا یاد نہیں</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">میں نے ہر بار تجھے دیکھا ہے</p>
-                        <p class="misra">تو نے ہر بار مجھے دیکھا ہے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">عمر بھر کاش یہی ہوتا رہے</p>
-                        <p class="misra">میں تجھے دیکھوں تو تو دیکھے مجھے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">آج بھی اس کی یاد آئی ہے</p>
-                        <p class="misra">آج بھی دل میں آگ لگائی ہے</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: پروین شاکر (ایک اور)</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">بارش ہوئی تو پھولوں کے تن چاک ہو گئے</p>
-                        <p class="misra">موسم کے ہاتھ بھیگ گئے عریانیوں کے ساتھ</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">میں سچ کہوں گی مگر پھر بھی ہار جاؤں گی</p>
-                        <p class="misra">وہ جھوٹ بولے گا اور لاجواب کر دے گا</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">اس کی آنکھوں میں محبت کا ستارہ ہوگا</p>
-                        <p class="misra">ایک دن آئے گا وہ شخص ہمارا ہوگا</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">کبھی تو آسماں سے چاند اترے</p>
-                        <p class="misra">کبھی تو شام ہو اور ہم ہوں</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: وصی شاہ (ایک اور)</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">کہا تھا نا کہ یوں سوتے نہیں ہیں</p>
-                        <p class="misra">تڑپ اٹھو گے جب تنہا رہو گے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">یہ جو پتھر دل ہے میرا</p>
-                        <p class="misra">یہ کسی کا دل تو نہیں ہے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">میں نے جب بھی اسے دیکھا ہے</p>
-                        <p class="misra">وہ کسی اور کا ہو کر دیکھا ہے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">مجھے معلوم ہے کہ میں تیری چاہت میں نہیں</p>
-                        <p class="misra">مگر یہ بھی سچ ہے کہ تو میری چاہت میں نہیں</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: احمد فراز (ایک اور)</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">سنا ہے لوگ اسے آنکھ بھر کے دیکھتے ہیں</p>
-                        <p class="misra">سو اس کے شہر میں کچھ دن ٹھہر کے دیکھتے ہیں</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">اگر وہ اپنے محبت کا فیصلہ کرے</p>
-                        <p class="misra">تو ہم بھی اپنی محبت کا فیصلہ کریں</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">یہ دل یہ پاگل دل میرا کیوں بجھ گیا</p>
-                        <p class="misra">آوارگی کو اپنی منزل بنا لیا</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">اب کے ہم بچھڑے تو شاید کبھی خوابوں میں ملیں</p>
-                        <p class="misra">جس طرح سوکھے ہوئے پھول کتابوں میں ملیں</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: محسن نقوی (ایک اور)</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">چپ چاپ سہی مسکرا کر دیکھ</p>
-                        <p class="misra">یہ دنیا ہے یہاں ایسے نہیں چلتا</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">مجھے خبر تھی کہ اب وہ میرا نہیں ہے</p>
-                        <p class="misra">مگر یہ دل تھا کہ مانتا نہیں تھا</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">ابھی تو ہم نے اسے چھوڑا ہے</p>
-                        <p class="misra">ابھی تو اس نے ہمیں چھوڑا ہے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">کیا کروں گا میں اس کا</p>
-                        <p class="misra">جو میرا ہو کر بھی میرا نہیں ہے</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: میر تقی میر (ایک اور)</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">الٹی ہو گئیں سب تدبیریں کچھ نہ دوا نے کام کیا</p>
-                        <p class="misra">دیکھا اس بیماریِ دل نے آخر کام تمام کیا</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">عہدِ شباب میں میرؔ ہمارا</p>
-                        <p class="misra">جوشِ جنوں کا نام کیا</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">شام ہی سے بجھا بجھا سا ہے</p>
-                        <p class="misra">دل نہیں ہے چراغ سا ہے</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">میرؔ جی کو ہم نے دیکھا ہے</p>
-                        <p class="misra">وہ بھی اس عشق میں مبتلا ہے</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h2 class="ghazal-title">غزل: ناصر کاظمی (ایک اور)</h2>
-                <div class="urdu-text">
-                    <div class="sher">
-                        <p class="misra">کون کہتا ہے کہ موت آئی تو مر جاؤں گا</p>
-                        <p class="misra">میں تو دریا ہوں سمندر میں اتر جاؤں گا</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">تیرے در تک تو پہنچ پایا نہیں ہوں</p>
-                        <p class="misra">ورنہ میں تو ہر حد سے گزر جاؤں گا</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">کبھی تو لوٹ آئے گا وہ</p>
-                        <p class="misra">یہ سوچ کر میں ٹھہر جاؤں گا</p>
-                    </div>
-                    <div class="sher">
-                        <p class="misra">میں تو دریا ہوں سمندر میں اتر جاؤں گا</p>
-                        <p class="misra">کون کہتا ہے کہ موت آئی تو مر جاؤں گا</p>
-                    </div>
-                </div>
-            </article>
-
-        </section>
-
-        <footer class="text-center mt-12 p-6 bg-teal-700 text-white rounded-lg">
-            <p class="text-lg urdu-text">اردو شاعری سے لطف اٹھائیں!</p>
-            <p class="text-sm">&copy; 2025 Urdu Poetry. All rights reserved.</p>
-        </footer>
+    <div class="poetry-container">
+        <!-- ابتدائی 3 اشعار -->
+        <div class="poetry-card">
+            <h3>غالب</h3>
+            <p>ہزاروں خواہشیں ایسی کہ ہر خواہش پہ دم نکلے<br>بہت نکلے مرے ارمان لیکن پھر بھی کم نکلے</p>
+        </div>
+        <div class="poetry-card">
+            <h3>اقبال</h3>
+            <p>ستاروں سے آگے جہاں اور بھی ہیں<br>ابھی عشق کے امتحان اور بھی ہیں</p>
+        </div>
+        <div class="poetry-card">
+            <h3>فیض</h3>
+            <p>گل اس گلشن میں کھلیں کہ نہ کھلیں<br>ہم وہ عاشق ہیں جو ملے نہ ملے</p>
+        </div>
+        <!-- اضافی 10 اشعار -->
+        <div class="poetry-card">
+            <h3>مرزا غالب</h3>
+            <p>دل ہی تو ہے نہ سنگ و خشت درد سے بھر نہ آئے کیوں<br>روئیں گے ہم ہزار بار کوئی ہمیں ستائے کیوں</p>
+        </div>
+        <div class="poetry-card">
+            <h3>علامہ اقبال</h3>
+            <p>خودی کو کر بلند اتنا کہ ہر تقدیر سے پہلے<br>خدا بندے سے خود پوچھے بتا تیری رضا کیا ہے</p>
+        </div>
+        <div class="poetry-card">
+            <h3>فیض احمد فیض</h3>
+            <p>رقص بسمل کر رہے ہیں دوست ہمارے سامنے<br>ہم تماشائی تماشوں کے تماشے دیکھتے ہیں</p>
+        </div>
+        <div class="poetry-card">
+            <h3>احمد فراز</h3>
+            <p>رنجش ہی سہی دل ہی دکھانے کے لیے آ<br>آ پھر سے مجھے چھوڑ کے جانے کے لیے آ</p>
+        </div>
+        <div class="poetry-card">
+            <h3>پروین شاکر</h3>
+            <p>وہ تو خود ہی چلے جاتے ہیں ہر بار مگر<br>ہر بار الگ راہ سے گزرے ہیں ہم</p>
+        </div>
+        <div class="poetry-card">
+            <h3>مرزا غالب</h3>
+            <p>ہر ایک بات پہ کہتے ہو تم کہ تو کیا ہے<br>تمھیں کہو کہ یہ انداز گفتگو کیا ہے</p>
+        </div>
+        <div class="poetry-card">
+            <h3>علامہ اقبال</h3>
+            <p>ہزاروں سال نرگس اپنی بے نوری پہ روتی ہے<br>بڑی مشکل سے ہوتا ہے چمن میں دیدہ ور پیدا</p>
+        </div>
+        <div class="poetry-card">
+            <h3>فیض احمد فیض</h3>
+            <p>نثار میں تیری گلیوں کے اے وطن کہ جہاں<br>چلی ہے رسم کہ کوئی نہ سر اٹھا کے چلے</p>
+        </div>
+        <div class="poetry-card">
+            <h3>احمد فراز</h3>
+            <p>اب کے ہم بچھڑے تو شاید کبھی خوابوں میں ملیں<br>جس طرح سوکھے ہوئے پھول کتابوں میں ملیں</p>
+        </div>
+        <div class="poetry-card">
+            <h3>پروین شاکر</h3>
+            <p>کچھ تو ہوا جو پھولوں کی خوشبو بدل گئی<br>کچھ تو ہوا جو رت ہی ساری بدل گئی</p>
+        </div>
+        <!-- مشہور شعرا کے 10 اشعار -->
+        <div class="poetry-card">
+            <h3>میر تقی میر</h3>
+            <p>دل کے دریا میں لہریں ایسی ہیں<br>ہر سانس ساحل سے ٹکراتی ہے</p>
+        </div>
+        <div class="poetry-card">
+            <h3>جون ایلیا</h3>
+            <p>ہم تو محبت سے محبت کرتے ہیں<br>تم سے محبت کی بات کیا کریں</p>
+        </div>
+        <div class="poetry-card">
+            <h3>ناصر کاظمی</h3>
+            <p>دل دھڑکتا ہے تو ایک درد اٹھتا ہے<br>یاد کی لہر سی سینے میں سمٹتی ہے</p>
+        </div>
+        <div class="poetry-card">
+            <h3>منیر نیازی</h3>
+            <p>ہمیشہ دیر کر دیتا ہوں میں<br>ہر کام کرنے میں دیر کر دیتا ہوں</p>
+        </div>
+        <div class="poetry-card">
+            <h3>داغ دہلوی</h3>
+            <p>یہ چمن یہ چاندنی یہ حسن یہ عالم<br>ہر ایک چیز محبت کی دلیل ہے یہاں</p>
+        </div>
+        <div class="poetry-card">
+            <h3>میر تقی میر</h3>
+            <p>اشک آنکھوں میں کب نہ آیا ہوگا<br>رات بھر درد نے ستا یا ہوگا</p>
+        </div>
+        <div class="poetry-card">
+            <h3>جون ایلیا</h3>
+            <p>اب تو یہ دل خیال سے خالی ہے<br>ہر درد کی جگہ دل میں خالی ہے</p>
+        </div>
+        <div class="poetry-card">
+            <h3>ناصر کاظمی</h3>
+            <p>چاندنی راتوں میں چاند سے ملنے<br>خواب کے رستے چلے جاتے ہیں</p>
+        </div>
+        <div class="poetry-card">
+            <h3>منیر نیازی</h3>
+            <p>اک اور دریا کا سامنا تھا منیر مجھے<br>میں ایک دریا کے پار اترا تو میں نے دیکھا</p>
+        </div>
+        <div class="poetry-card">
+            <h3>داغ دہلوی</h3>
+            <p>دل کی دھڑکن سے چلتی ہے یہ زندگی<br>ورنہ یہ زندگی تو محض ایک خواب ہے</p>
+        </div>
+        <!-- مشہور غزلوں کے 10 اشعار -->
+        <div class="poetry-card">
+            <h3>مرزا غالب</h3>
+            <p>بازِیچۂ اطفال ہے دنیا مرے آگے<br>ہوتا ہے شب و روز تماشا مرے آگے</p>
+        </div>
+        <div class="poetry-card">
+            <h3>فیض احمد فیض</h3>
+            <p>گلوں میں رنگ بھرے بادِ نو بہار چلے<br>چلے بھی آؤ کہ گلشن کا کاروبار چلے</p>
+        </div>
+        <div class="poetry-card">
+            <h3>احمد فراز</h3>
+            <p>سنا ہے لوگ اسے آنکھ بھر کے دیکھتے ہیں<br>سو اس کے شہر میں کچھ دن ٹھہر کے دیکھتے ہیں</p>
+        </div>
+        <div class="poetry-card">
+            <h3>جون ایلیا</h3>
+            <p>یہ جو عالم ہے وہ عالم نہیں ہے<br>یہ کوئی اور ہی عالم ہے جاناں</p>
+        </div>
+        <div class="poetry-card">
+            <h3>ناصر کاظمی</h3>
+            <p>دیا جلتا رہا رات بھر تنہائی میں<br>کوئی خواب آیا نہ کوئی بات ہوئی</p>
+        </div>
+        <div class="poetry-card">
+            <h3>مرزا غالب</h3>
+            <p>نہ تھا کچھ تو خدا تھا، کچھ نہ ہوتا تو خدا ہوتا<br>ڈبویا مجھ کو ہونے نے، نہ ہوتا میں تو کیا ہوتا</p>
+        </div>
+        <div class="poetry-card">
+            <h3>فیض احمد فیض</h3>
+            <p>کبھی کوئی آیا نہ ہم نے بلایا<br>کبھی ہم کہاں دل کی ساری سنا پائے</p>
+        </div>
+        <div class="poetry-card">
+            <h3>احمد فراز</h3>
+            <p>یہ عالم شوق کا دیکھا نہ جائے<br>یہ خواب دل کو بہت یاد آئے</p>
+        </div>
+        <div class="poetry-card">
+            <h3>جون ایلیا</h3>
+            <p>ہر ایک لمحہ محبت کا لمحہ ہے<br>ہر ایک سانس محبت کی سانس ہے</p>
+        </div>
+        <div class="poetry-card">
+            <h3>ناصر کاظمی</h3>
+            <p>یہ دل یہ شہر یہ ساری کہانیاں<br>سب خواب تھے جو ہم نے دیکھے رات کو</p>
+        </div>
+        <!-- غالب کی غزلوں کے 10 اشعار -->
+        <div class="poetry-card">
+            <h3>مرزا غالب</h3>
+            <p>ہم نے مانا کہ تغافل نہ کرو گے لیکن<br>خاک ہو جائیں گے ہم تم کو خبر ہونے تک</p>
+        </div>
+        <div class="poetry-card">
+            <h3>مرزا غالب</h3>
+            <p>درد سے میرے ہے تجھ کو بے قراری ہائے ہائے<br>یہ ہمدردی ہوئی نہ ہوئی تیری خودداری ہائے ہائے</p>
+        </div>
+        <div class="poetry-card">
+            <h3>مرزا غالب</h3>
+            <p>کوئی امید بر نہ آئی کوئی صورت نہ نظر آئی<br>موت کا ایک دن معین ہے نیند کیوں رات بھر نہ آئی</p>
+        </div>
+        <div class="poetry-card">
+            <h3>مرزا غالب</h3>
+            <p>عشق نے غالب نکما کر دیا<br>ورنہ ہم بھی آدمی تھے کام کے</p>
+        </div>
+        <div class="poetry-card">
+            <h3>مرزا غالب</h3>
+            <p>دھمکی میں مر گیا جو نہ بابِ نبرد تھا<br>عشق نبرد پیشہ طلبگارِ مرد تھا</p>
+        </div>
+        <div class="poetry-card">
+            <h3>مرزا غالب</h3>
+            <p>یہ نہ تھی ہماری قسمت کہ وصالِ یار ہوتا<br>اگر اور جیتے رہتے یہی انتظار ہوتا</p>
+        </div>
+        <div class="poetry-card">
+            <h3>مرزا غالب</h3>
+            <p>ہوئی مدت کہ غالب مر گیا پر یاد آتا ہے<br>وہ ہر ایک بات پر کہنا کہ یوں ہوتا تو کیا ہوتا</p>
+        </div>
+        <div class="poetry-card">
+            <h3>مرزا غالب</h3>
+            <p>ہر ایک سانس سے آتی ہے بوئے یار کی خوشبو<br>یہ دل کی دھڑکنیں ہیں یا کوئی آواز دیتا ہے</p>
+        </div>
+        <div class="poetry-card">
+            <h3>مرزا غالب</h3>
+            <p>قیدِ حیات و بندِ غم اصل میں دونوں ایک ہیں<br>موت سے پہلے آدمی غم سے نجات پائے کیوں</p>
+        </div>
+        <div class="poetry-card">
+            <h3>مرزا غالب</h3>
+            <p>آہ کو چاہیے اک عمر اثر ہونے تک<br>کون جیتا ہے تری زلف کے سر ہونے تک</p>
+        </div>
     </div>
-</body>
-</html>
 
+    <footer>
+        <p>© 2025 اردو شاعری کا گوشہ. جملہ حقوق محفوظ ہیں۔ by AKRAM KHAN</p>
+    </footer>
+
+    <script>
+        // کارڈ پر کلک کرنے پر شعر کی تفصیلات دکھانے کے لیے
+        document.querySelectorAll('.poetry-card').forEach(card => {
+            card.addEventListener('click', () => {
+                alert('شعر کی تفصیلات یہاں دکھائی جائیں گی!');
+            });
+        });
+    </script>
+</body>
+                             </html>
