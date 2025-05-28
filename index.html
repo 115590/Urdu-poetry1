@@ -1,303 +1,770 @@
 <!DOCTYPE html>
-<html lang="ur">
-<head>
+<html lang="ur" data-theme="dark"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اردو شاعری  </title>
+    <title>اردو شاعری</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
+        /* Default (Dark) Theme Variables - Optimized Blue Palette */
+        :root {
+            --primary-bg: #1a237e; /* Deepest blue for main background gradient start */
+            --secondary-bg: #283593; /* Slightly lighter deep blue */
+            --accent-color: #3f51b5; /* Medium blue accent */
+            --hover-color: #7986cb; /* Lighter blue for hover effects */
+
+            --dark-text: #ffffff; /* White text for dark backgrounds */
+            --light-text: #e3f2fd; /* Very light blue for elements on dark background */
+
+            --header-footer-bg: var(--primary-bg); /* Header and footer use deepest blue */
+            --header-footer-text: var(--light-text); /* White text on header/footer */
+
+            /* Dark Theme Poetry Card Colors - Adjusted for visibility */
+            --poetry-card-bg: #2a2a2a; /* Slightly lighter dark grey for cards in dark theme */
+            --poetry-card-text: #ffffff; /* White text on dark cards */
+
+            --alert-bg: #1565c0; /* Darker blue for alert background */
+            --alert-text: #ffffff; /* White text for alert */
+            --alert-accent: #ffeb3b; /* A contrasting yellow/gold for alert accent */
+
+            --square-border-top: #7986cb;
+            --square-border-right: #3f51b5;
+            --square-border-bottom: #1a237e;
+            --square-border-left: #283593;
+        }
+
+        /* Light Theme Overrides - Optimized Blue Palette */
+        html[data-theme="light"] {
+            --primary-bg: #e3f2fd; /* Very light blue for main background gradient start */
+            --secondary-bg: #bbdefb; /* Light blue */
+            --accent-color: #64b5f6; /* Medium light blue accent */
+            --hover-color: #2196f3; /* Bright blue for hover effects */
+
+            --dark-text: #1a237e; /* Deep blue text for light backgrounds */
+            --light-text: #0d47a1; /* Darker blue for elements on light background */
+
+            --header-footer-bg: #e3f2fd; /* Very light blue for header and footer */
+            --header-footer-text: var(--dark-text); /* Deep blue text on light header/footer */
+
+            /* Light Theme Poetry Card Colors - White and Deep Blue */
+            --poetry-card-bg: #ffffff; /* White for cards in light theme */
+            --poetry-card-text: #1a237e; /* Deep blue text on white cards */
+
+            --alert-bg: #bbdefb; /* Light blue for alert background */
+            --alert-text: #1a237e; /* Deep blue text for alert */
+            --alert-accent: #ffeb3b; /* Yellow/gold for alert accent */
+
+            --square-border-top: #2196f3;
+            --square-border-right: #64b5f6;
+            --square-border-bottom: #bbdefb;
+            --square-border-left: #e3f2fd;
+        }
+
+        /* Dark Theme Specific Overrides for Header and Footer */
+        html[data-theme="dark"] header,
+        html[data-theme="dark"] footer {
+            background: #000000; /* Black background for header and footer in dark theme */
+            color: var(--dark-text); /* White text on black background */
+        }
+
+        html[data-theme="dark"] header h1 {
+            color: var(--dark-text); /* White text for header title in dark theme */
+        }
+
+        html[data-theme="dark"] nav a {
+            color: var(--dark-text); /* White text for nav links in dark theme */
+        }
+
+        html[data-theme="dark"] nav a:hover {
+            color: var(--accent-color); /* Accent color on hover in dark theme */
+        }
+
+        html[data-theme="dark"] nav a::after {
+            background: var(--accent-color); /* Accent color for underline in dark theme */
+        }
+
+        /* Dark Theme Buttons - Now Green */
+        html[data-theme="dark"] .theme-toggle-button,
+        html[data-theme="dark"] .whatsapp-button {
+            border-color: #4CAF50; /* Green border for buttons in dark theme */
+            color: #4CAF50; /* Green icon for buttons in dark theme */
+        }
+        html[data-theme="dark"] .theme-toggle-button:hover,
+        html[data-theme="dark"] .whatsapp-button:hover {
+            background-color: rgba(76, 175, 80, 0.1); /* Light green background on hover */
+            border-color: #388E3C; /* Darker green on hover */
+            color: #388E3C; /* Darker green on hover */
+        }
+
+        html[data-theme="dark"] footer p,
+        html[data-theme="dark"] footer a {
+            color: var(--dark-text); /* White text for footer in dark theme */
+        }
+        html[data-theme="dark"] footer a:hover {
+            color: var(--accent-color); /* Accent color on hover in dark theme */
+        }
+
+
         body {
             font-family: 'Noto Nastaliq Urdu', sans-serif;
-            background: linear-gradient(to right, #f4f1de, #e07a5f);
+            background: linear-gradient(-45deg, var(--primary-bg), var(--secondary-bg), var(--accent-color), var(--dark-text));
+            background-size: 400% 400%; /* Make gradient larger for animation */
+            animation: gradientAnimation 15s ease infinite; /* Smooth, looping gradient animation */
+
             margin: 0;
             padding: 0;
-            direction: rtl;
+            direction: rtl; /* Right-to-left for Urdu */
             text-align: center;
+            min-height: 100vh; /* Ensure body takes full viewport height */
+            color: var(--dark-text); /* Default text color */
+            position: relative;
+            transition: background 0.8s ease, color 0.8s ease; /* Smooth theme transition for body background and text */
         }
+
+        /* Gradient Animation Keyframes */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         header {
-            background: #2d3142;
-            color: white;
+            background: var(--header-footer-bg); /* Dynamic header background */
+            color: var(--header-footer-text); /* Dynamic header text color */
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Stronger, more elegant shadow */
+            position: sticky; /* Make header sticky */
+            top: 0;
+            z-index: 1000; /* Ensure header stays on top */
+            animation: headerSlideDown 0.8s ease-out forwards; /* Header animation on load */
+            padding-left: 100px; /* Increased padding for horizontal buttons */
+            transition: background-color 0.5s ease, color 0.5s ease; /* Smooth theme transition */
+            height: 110px; /* Increased height to accommodate stacked buttons */
         }
+
+        @keyframes headerSlideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
         header h1 {
-            margin: 0;
-            font-size: 2.5em;
+            margin: -35px 0 0; /* Adjusted margin-top to move text further up */
+            font-size: 3.2em; /* Larger heading for impact */
+            color: var(--header-footer-text); /* Dynamic header title color */
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
+            letter-spacing: 2px; /* Slightly increased letter spacing */
+            font-weight: 900; /* Bolder font weight */
+            transition: color 0.5s ease; /* Smooth theme transition */
         }
+
+        /* Theme switch container and button */
+        .theme-toggle-button-container {
+            position: absolute;
+            left: 20px; /* Position on the left */
+            top: 10px; /* Adjusted top position */
+            z-index: 1001; /* Ensure it's above other header elements */
+        }
+
+        .whatsapp-button-container {
+            position: absolute;
+            left: 20px; /* Position on the left */
+            top: 65px; /* Adjusted top position to be below theme toggle */
+            z-index: 1001; /* Ensure it's above other header elements */
+        }
+
+        .theme-toggle-button,
+        .whatsapp-button { /* Apply common styles to both buttons */
+            background: none;
+            border: 2px solid var(--header-footer-text); /* Border color based on header text */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+            font-size: 1.5em;
+            color: var(--header-footer-text); /* Icon color based on header text */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-decoration: none; /* Remove underline for anchor button */
+        }
+
+        .theme-toggle-button:hover,
+        .whatsapp-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--hover-color);
+            color: var(--hover-color);
+        }
+
+        /* Icon for the theme toggle button */
+        .theme-toggle-button .icon {
+            transition: transform 0.3s ease;
+        }
+        html[data-theme="light"] .theme-toggle-button .icon {
+            transform: rotate(360deg); /* Spin icon on theme change */
+        }
+
+
+        nav {
+            margin-top: -15px; /* Adjusted margin-top to move nav links up */
+            transition: margin-top 0.5s ease; /* Smooth transition for nav */
+        }
+
         nav a {
-            color: #f4f1de;
-            margin: 0 15px;
+            color: var(--header-footer-text); /* Dynamic nav link color */
+            margin: 0 18px; /* More spacing */
             text-decoration: none;
-            font-size: 1.2em;
+            font-size: 1.3em; /* Slightly larger font */
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover */
+            position: relative; /* For underline effect */
+            padding-bottom: 5px; /* Space for underline */
+            display: inline-block; /* Required for transform */
         }
+
         nav a:hover {
-            color: #e07a5f;
+            color: var(--hover-color);
+            transform: translateY(-2px); /* Lift slightly on hover */
         }
+
+        /* Underline effect on hover */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin: auto;
+            background: var(--hover-color);
+            transition: width 0.3s ease;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
         .poetry-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            padding: 20px;
+            padding: 30px 10px; /* More padding */
         }
+
         .poetry-card {
-            background: white;
-            width: 300px;
-            margin: 15px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            background: var(--poetry-card-bg); /* Dynamic card background */
+            width: 280px; /* Reduced card width */
+            padding: 15px 25px; /* Reduced vertical padding */
+            margin: 20px; /* More margin */
+            border-radius: 12px; /* Slightly more rounded corners */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Softer, larger shadow */
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.5s ease; /* Smooth theme transition */
+            text-align: right; /* Align text right for Urdu */
+            line-height: 1.8; /* Improved line spacing for readability */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Distribute space */
+            /* AOS will handle initial animation, no need for custom cardFadeIn here */
         }
+
         .poetry-card:hover {
-            transform: scale(1.05);
+            transform: scale(1.03) translateY(-5px); /* Lift and scale slightly */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); /* More pronounced shadow on hover */
         }
+
         .poetry-card h3 {
-            color: #2d3142;
-            font-size: 1.5em;
+            color: var(--poetry-card-text); /* Dynamic poet name color */
+            font-size: 1.6em; /* Slightly larger poet name */
+            margin-bottom: 10px; /* Reduced margin below poet name */
+            border-bottom: 2px solid var(--accent-color); /* Underline for poet name */
+            padding-bottom: 5px; /* Reduced padding below poet name */
+            display: inline-block; /* To make border-bottom only cover text */
+            text-align: center; /* Center the poet's name */
+            width: 100%; /* Ensure it takes full width to center effectively */
+            transition: color 0.5s ease, border-color 0.5s ease; /* Smooth theme transition */
         }
+
         .poetry-card p {
-            color: #4a4e69;
-            font-size: 1.2em;
-            line-height: 1.5;
+            color: var(--poetry-card-text); /* Dynamic poetry text color */
+            font-size: 1.3em; /* Larger poetry text */
+            line-height: 1.6; /* Reduced line height for compactness */
+            margin-top: 10px; /* Reduced margin above poetry text */
+            text-align: center; /* Center the poetry text */
+            transition: color 0.5s ease; /* Smooth theme transition */
         }
+
         footer {
-            background: #2d3142;
-            color: white;
-            padding: 10px;
-            position: relative;
-            bottom: 0;
+            background: var(--header-footer-bg); /* Dynamic footer background */
+            color: var(--header-footer-text); /* Dynamic footer text color */
+            padding: 15px; /* More padding for footer */
             width: 100%;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Shadow above footer */
+            font-size: 0.95em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            margin-top: auto; /* Push footer to the bottom */
+            transition: background-color 0.5s ease, color 0.5s ease; /* Smooth theme transition */
         }
-        @media (max-width: 600px) {
+        footer p, footer a {
+            margin: 5px 10px;
+            color: var(--header-footer-text); /* Dynamic footer text color */
+            text-decoration: none;
+            transition: color 0.5s ease; /* Smooth theme transition */
+        }
+        footer a:hover {
+            color: var(--hover-color);
+            text-decoration: underline;
+        }
+
+        /* --- Custom Alert Styles --- */
+        .custom-alert-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000; /* Ensure it's on top of everything */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .custom-alert-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .custom-alert-box {
+            background-color: var(--alert-bg); /* Dynamic alert background */
+            color: var(--alert-text);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 90%; /* Responsive width */
+            text-align: center;
+            transform: scale(0.8); /* Start smaller for animation */
+            opacity: 0;
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.3s ease, background-color 0.5s ease, border-color 0.5s ease; /* Smooth theme transition */
+            
+            /* Add the colorful border - adjusted for blue theme */
+            border-top: 8px solid var(--square-border-top);
+            border-right: 8px solid var(--square-border-right);
+            border-bottom: 8px solid var(--square-border-bottom);
+            border-left: 8px solid var(--square-border-left);
+        }
+
+        .custom-alert-overlay.show .custom-alert-box {
+            transform: scale(1); /* Scale up to normal size */
+            opacity: 1;
+        }
+
+        .custom-alert-box h2 {
+            color: var(--alert-accent); /* Accent color for heading (yellow/gold) */
+            font-size: 2em;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            transition: color 0.5s ease; /* Smooth theme transition */
+        }
+
+        /* Alert message text with color changing animation */
+        .custom-alert-box p {
+            font-size: 1.5em; /* Larger, attractive message text */
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-weight: bold; /* Make text bold */
+            color: var(--alert-text); /* Default color, will be overridden by animation */
+            animation: colorChange 2s infinite alternate; /* Increased speed: 2s duration */
+            transition: color 0.5s ease; /* Smooth theme transition for default color */
+        }
+
+        /* Keyframes for color changing animation */
+        @keyframes colorChange {
+            0%   { color: #ffeb3b; } /* Yellow */
+            25%  { color: #e53935; } /* Red */
+            50%  { color: #43a047; } /* Green */
+            75%  { color: #fb8c00; } /* Orange */
+            100% { color: #2196f3; } /* Blue */
+        }
+
+
+        .custom-alert-box button {
+            background-color: var(--alert-accent); /* Yellow/gold button */
+            color: var(--dark-text); /* Dark text on button */
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.2s ease, color 0.5s ease; /* Smooth theme transition */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .custom-alert-box button:hover {
+            background-color: #fdd835; /* Slightly darker yellow on hover */
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            nav a {
+                font-size: 1.1em;
+                margin: 0 10px;
+            }
             .poetry-card {
-                width: 100%;
+                width: 90%; /* Wider on smaller screens */
+                margin: 15px 0; /* Adjust margin for mobile */
+                padding: 10px 15px; /* Further reduced padding for mobile */
+            }
+            .poetry-card h3 {
+                font-size: 1.4em;
+            }
+            .poetry-card p {
+                font-size: 1.1em;
+            }
+            .custom-alert-box {
+                padding: 20px;
+                border-width: 5px; /* Thinner border on mobile */
+            }
+            .custom-alert-box h2 {
+                font-size: 1.6em;
+            }
+            .custom-alert-box p {
+                font-size: 1.2em;
+            }
+            .theme-toggle-button-container {
+                left: 10px;
+                top: 10px; /* Adjust for mobile header */
+            }
+            .whatsapp-button-container {
+                left: 10px;
+                top: 55px; /* Adjusted for mobile to be below theme toggle */
+            }
+            header {
+                padding-left: 60px; /* Adjust header padding for mobile */
+                height: 90px; /* Adjust height for mobile */
+            }
+            nav {
+                margin-top: 0; /* Reset margin for mobile nav */
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>اردو شاعری  </h1>
+        <div class="theme-toggle-button-container">
+            <button id="themeToggle" class="theme-toggle-button">
+                <span class="icon">🌙</span> </button>
+        </div>
+        <div class="whatsapp-button-container">
+            <a href="https://wa.me/+923001881920?text=Hello%20I%20have%20a%20question" target="_blank" class="whatsapp-button" title="WhatsApp پر رابطہ کریں">
+                <span class="icon">💬</span> </a>
+        </div>
+        <h1>اردو شاعری</h1>
         <nav>
-           
-            <img
-                </a>
-            <a href="mailto:akramlala300@gmail.com?subject=Hello%20Akram&body=This%20is%20a%20test%20email">ای میل کریں </a>
+            <a href="mailto:akramlala300@gmail.com?subject=Hello%20Akram&body=This%20is%20a%20test%20email">ای میل کریں</a>
             <a href="https://wa.me/+923001881920?text=Hello%20I%20have%20a%20question" target="_blank">رابطہ کریں</a>
         </nav>
     </header>
 
     <div class="poetry-container">
-        <!-- ابتدائی 3 اشعار -->
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
             <h3>غالب</h3>
             <p>ہزاروں خواہشیں ایسی کہ ہر خواہش پہ دم نکلے<br>بہت نکلے مرے ارمان لیکن پھر بھی کم نکلے</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
             <h3>اقبال</h3>
             <p>ستاروں سے آگے جہاں اور بھی ہیں<br>ابھی عشق کے امتحان اور بھی ہیں</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
             <h3>فیض</h3>
             <p>گل اس گلشن میں کھلیں کہ نہ کھلیں<br>ہم وہ عاشق ہیں جو ملے نہ ملے</p>
         </div>
-        <!-- اضافی 10 اشعار -->
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
             <h3>مرزا غالب</h3>
             <p>دل ہی تو ہے نہ سنگ و خشت درد سے بھر نہ آئے کیوں<br>روئیں گے ہم ہزار بار کوئی ہمیں ستائے کیوں</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
             <h3>علامہ اقبال</h3>
             <p>خودی کو کر بلند اتنا کہ ہر تقدیر سے پہلے<br>خدا بندے سے خود پوچھے بتا تیری رضا کیا ہے</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
             <h3>فیض احمد فیض</h3>
             <p>رقص بسمل کر رہے ہیں دوست ہمارے سامنے<br>ہم تماشائی تماشوں کے تماشے دیکھتے ہیں</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
             <h3>علامہ اقبال</h3>
             <p>افراد کے ہاتھوں میں ہے اقوام کی تقدیر<br>وہ ہر فرد ہے ملت کے مقدر کا ستارہ</p>
         </div>
-<div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
             <h3>علامہ اقبال</h3>
-            <p>لب پہ آتی ہے دعا بن کے تمنا میری<br>
-زندگی شمع کی صورت ہو خدایا میری</p>
-</div>
-        <div class="poetry-card">
+            <p>لب پہ آتی ہے دعا بن کے تمنا میری<br>زندگی شمع کی صورت ہو خدایا میری</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
             <h3>احمد فراز</h3>
             <p>رنجش ہی سہی دل ہی دکھانے کے لیے آ<br>آ پھر سے مجھے چھوڑ کے جانے کے لیے آ</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
             <h3>پروین شاکر</h3>
             <p>وہ تو خود ہی چلے جاتے ہیں ہر بار مگر<br>ہر بار الگ راہ سے گزرے ہیں ہم</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
             <h3>مرزا غالب</h3>
             <p>ہر ایک بات پہ کہتے ہو تم کہ تو کیا ہے<br>تمھیں کہو کہ یہ انداز گفتگو کیا ہے</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
             <h3>علامہ اقبال</h3>
             <p>ہزاروں سال نرگس اپنی بے نوری پہ روتی ہے<br>بڑی مشکل سے ہوتا ہے چمن میں دیدہ ور پیدا</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
             <h3>فیض احمد فیض</h3>
             <p>نثار میں تیری گلیوں کے اے وطن کہ جہاں<br>چلی ہے رسم کہ کوئی نہ سر اٹھا کے چلے</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
             <h3>احمد فراز</h3>
             <p>اب کے ہم بچھڑے تو شاید کبھی خوابوں میں ملیں<br>جس طرح سوکھے ہوئے پھول کتابوں میں ملیں</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
             <h3>پروین شاکر</h3>
             <p>کچھ تو ہوا جو پھولوں کی خوشبو بدل گئی<br>کچھ تو ہوا جو رت ہی ساری بدل گئی</p>
         </div>
-        <!-- مشہور شعرا کے 10 اشعار -->
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
             <h3>میر تقی میر</h3>
             <p>دل کے دریا میں لہریں ایسی ہیں<br>ہر سانس ساحل سے ٹکراتی ہے</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
             <h3>جون ایلیا</h3>
             <p>ہم تو محبت سے محبت کرتے ہیں<br>تم سے محبت کی بات کیا کریں</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
             <h3>ناصر کاظمی</h3>
             <p>دل دھڑکتا ہے تو ایک درد اٹھتا ہے<br>یاد کی لہر سی سینے میں سمٹتی ہے</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
             <h3>منیر نیازی</h3>
             <p>ہمیشہ دیر کر دیتا ہوں میں<br>ہر کام کرنے میں دیر کر دیتا ہوں</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
             <h3>داغ دہلوی</h3>
             <p>یہ چمن یہ چاندنی یہ حسن یہ عالم<br>ہر ایک چیز محبت کی دلیل ہے یہاں</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
             <h3>میر تقی میر</h3>
             <p>اشک آنکھوں میں کب نہ آیا ہوگا<br>رات بھر درد نے ستا یا ہوگا</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
             <h3>جون ایلیا</h3>
             <p>اب تو یہ دل خیال سے خالی ہے<br>ہر درد کی جگہ دل میں خالی ہے</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
             <h3>ناصر کاظمی</h3>
             <p>چاندنی راتوں میں چاند سے ملنے<br>خواب کے رستے چلے جاتے ہیں</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
             <h3>منیر نیازی</h3>
             <p>اک اور دریا کا سامنا تھا منیر مجھے<br>میں ایک دریا کے پار اترا تو میں نے دیکھا</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
             <h3>داغ دہلوی</h3>
             <p>دل کی دھڑکن سے چلتی ہے یہ زندگی<br>ورنہ یہ زندگی تو محض ایک خواب ہے</p>
         </div>
-        <!-- مشہور غزلوں کے 10 اشعار -->
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
             <h3>مرزا غالب</h3>
             <p>بازِیچۂ اطفال ہے دنیا مرے آگے<br>ہوتا ہے شب و روز تماشا مرے آگے</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
             <h3>فیض احمد فیض</h3>
             <p>گلوں میں رنگ بھرے بادِ نو بہار چلے<br>چلے بھی آؤ کہ گلشن کا کاروبار چلے</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
             <h3>احمد فراز</h3>
             <p>سنا ہے لوگ اسے آنکھ بھر کے دیکھتے ہیں<br>سو اس کے شہر میں کچھ دن ٹھہر کے دیکھتے ہیں</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
             <h3>جون ایلیا</h3>
             <p>یہ جو عالم ہے وہ عالم نہیں ہے<br>یہ کوئی اور ہی عالم ہے جاناں</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
             <h3>ناصر کاظمی</h3>
             <p>دیا جلتا رہا رات بھر تنہائی میں<br>کوئی خواب آیا نہ کوئی بات ہوئی</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
             <h3>مرزا غالب</h3>
             <p>نہ تھا کچھ تو خدا تھا، کچھ نہ ہوتا تو خدا ہوتا<br>ڈبویا مجھ کو ہونے نے، نہ ہوتا میں تو کیا ہوتا</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
             <h3>فیض احمد فیض</h3>
             <p>کبھی کوئی آیا نہ ہم نے بلایا<br>کبھی ہم کہاں دل کی ساری سنا پائے</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
             <h3>احمد فراز</h3>
             <p>یہ عالم شوق کا دیکھا نہ جائے<br>یہ خواب دل کو بہت یاد آئے</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
             <h3>جون ایلیا</h3>
             <p>ہر ایک لمحہ محبت کا لمحہ ہے<br>ہر ایک سانس محبت کی سانس ہے</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
             <h3>ناصر کاظمی</h3>
             <p>یہ دل یہ شہر یہ ساری کہانیاں<br>سب خواب تھے جو ہم نے دیکھے رات کو</p>
         </div>
-        <!-- غالب کی غزلوں کے 10 اشعار -->
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
             <h3>مرزا غالب</h3>
             <p>ہم نے مانا کہ تغافل نہ کرو گے لیکن<br>خاک ہو جائیں گے ہم تم کو خبر ہونے تک</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
             <h3>مرزا غالب</h3>
             <p>درد سے میرے ہے تجھ کو بے قراری ہائے ہائے<br>یہ ہمدردی ہوئی نہ ہوئی تیری خودداری ہائے ہائے</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
             <h3>مرزا غالب</h3>
             <p>کوئی امید بر نہ آئی کوئی صورت نہ نظر آئی<br>موت کا ایک دن معین ہے نیند کیوں رات بھر نہ آئی</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
             <h3>مرزا غالب</h3>
             <p>عشق نے غالب نکما کر دیا<br>ورنہ ہم بھی آدمی تھے کام کے</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
             <h3>مرزا غالب</h3>
             <p>دھمکی میں مر گیا جو نہ بابِ نبرد تھا<br>عشق نبرد پیشہ طلبگارِ مرد تھا</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
             <h3>مرزا غالب</h3>
             <p>یہ نہ تھی ہماری قسمت کہ وصالِ یار ہوتا<br>اگر اور جیتے رہتے یہی انتظار ہوتا</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
             <h3>مرزا غالب</h3>
             <p>ہوئی مدت کہ غالب مر گیا پر یاد آتا ہے<br>وہ ہر ایک بات پر کہنا کہ یوں ہوتا تو کیا ہوتا</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
             <h3>مرزا غالب</h3>
             <p>ہر ایک سانس سے آتی ہے بوئے یار کی خوشبو<br>یہ دل کی دھڑکنیں ہیں یا کوئی آواز دیتا ہے</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
             <h3>مرزا غالب</h3>
             <p>قیدِ حیات و بندِ غم اصل میں دونوں ایک ہیں<br>موت سے پہلے آدمی غم سے نجات پائے کیوں</p>
         </div>
-<div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
             <h3>علامہ اقبال</h3>
             <p>خودی کو کر بلند اتنا کہ ہر تقدیر سے پہلے<br>وہ خدا بندے سے خود پوچھے بتا تیری رضا کیا ہے</p>
-</div>
-        <div class="poetry-card">
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
             <h3>علامہ اقبال</h3>
             <p>پرواز ہے دونوں کی اسی ایک فضا میں<br>وہ کرگس کا جہاں اور ہے شاہیں کا جہاں اور</p>
         </div>
-        <div class="poetry-card">
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
             <h3>مرزا غالب</h3>
             <p>آہ کو چاہیے اک عمر اثر ہونے تک<br>کون جیتا ہے تری زلف کے سر ہونے تک</p>
-       
+        </div>
     </div>
 
     <footer>
         <p>© 2025 اردو شاعری. جملہ حقوق محفوظ ہیں۔ by AKRAM KHAN 923001881920</p>
-        <a href="https://wa.me/+923001881920?text=Hello%20I%20have%20a%20question" target="_blank Whatsapp us">
-  <a href="https://wa.me/+923001881920" target="_blank">رابطہ کریں</a>
-        </a>
+        <a href="https://wa.me/+923001881920?text=Hello%20I%20have%20a%20question" target="_blank">رابطہ کریں (WhatsApp)</a>
     </footer>
 
+    <div id="customAlertOverlay" class="custom-alert-overlay">
+        <div class="custom-alert-box">
+            <h2 id="alertTitle">نوٹ</h2>
+            <p id="alertMessage">𝐌𝐀𝐃𝐄 𝐁𝐘 𝐀𝐊𝐑𝐀𝐌 𝐊𝐇𝐀𝐍!!!</p>
+            <button id="alertCloseButton">بند کریں</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // کارڈ پر کلک کرنے پر شعر کی تفصیلات دکھانے کے لیے
+        // Initialize AOS
+        AOS.init({
+            duration: 800, // Animation duration in ms
+            once: true,    // Whether animation should happen only once - while scrolling down
+        });
+
+        // Get custom alert elements
+        const customAlertOverlay = document.getElementById('customAlertOverlay');
+        const alertMessageElement = document.getElementById('alertMessage');
+        const alertCloseButton = document.getElementById('alertCloseButton');
+
+        // Function to show custom alert
+        function showAlert(message) {
+            alertMessageElement.innerHTML = message; // Use innerHTML to allow HTML tags like <b> or <span>
+            customAlertOverlay.classList.add('show');
+        }
+
+        // Function to hide custom alert
+        function hideAlert() {
+            customAlertOverlay.classList.remove('show');
+        }
+
+        // Event listener for closing the custom alert
+        alertCloseButton.addEventListener('click', hideAlert);
+        // Also hide if clicking outside the alert box (on the overlay)
+        customAlertOverlay.addEventListener('click', (event) => {
+            if (event.target === customAlertOverlay) {
+                hideAlert();
+            }
+        });
+
+
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement; // Get the <html> element
+
+        // Function to set theme
+        function setTheme(theme) {
+            htmlElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme); // Save preference
+            // Update icon based on theme
+            if (theme === 'dark') {
+                themeToggleBtn.querySelector('.icon').textContent = '🌙'; // Moon for dark
+            } else {
+                themeToggleBtn.querySelector('.icon').textContent = '☀️'; // Sun for light
+            }
+        }
+
+        // Function to toggle theme
+        function toggleTheme() {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        }
+
+        // Set initial theme based on localStorage or system preference
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else {
+                // Check user's system preference (optional)
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    setTheme('light');
+                } else {
+                    setTheme('dark'); // Default to dark if no preference
+                }
+            }
+        });
+
+        // Add event listener to the toggle button
+        themeToggleBtn.addEventListener('click', toggleTheme);
+
+        // کارڈ پر کلک کرنے پر کسٹم الرٹ دکھانے کے لیے
         document.querySelectorAll('.poetry-card').forEach(card => {
             card.addEventListener('click', () => {
-                alert ('𝐌𝐀𝐃𝐄 𝐁𝐘 𝐀𝐊𝐑𝐀𝐌 𝐊𝐇𝐀𝐍!!!');
+                // یہاں آپ کوئی بھی پیغام دے سکتے ہیں
+                showAlert('<b>𝐌𝐀𝐃𝐄 𝐁Y <br>𝐀𝐊𝐑𝐀𝐌 𝐊𝐇𝐀𝐍!!!</b>');
             });
         });
     </script>
 </body>
-                             </html>
+</html>
+
+    
