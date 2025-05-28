@@ -1,127 +1,99 @@
 <!DOCTYPE html>
-<html lang="ur" data-theme="dark"> <head>
+<html lang="ur" data-theme="dark">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اردو شاعری</title>
+    <title> اردو شاعری کا خزانہ</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jameel+Noori+Nastaleeq&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* Default (Dark) Theme Variables - Optimized Blue Palette */
+        /* Default (Dark) Theme Variables - Deep Blue/Indigo */
         :root {
-            --primary-bg: #1a237e; /* Deepest blue for main background gradient start */
-            --secondary-bg: #283593; /* Slightly lighter deep blue */
-            --accent-color: #3f51b5; /* Medium blue accent */
-            --hover-color: #7986cb; /* Lighter blue for hover effects */
+            --primary-bg: #0D47A1; /* Darker Blue */
+            --secondary-bg: #1565C0; /* Medium Dark Blue */
+            --accent-color: #1976D2; /* Bright Blue Accent */
+            --hover-color: #42A5F5; /* Lighter Blue for hover */
 
-            --dark-text: #ffffff; /* White text for dark backgrounds */
-            --light-text: #e3f2fd; /* Very light blue for elements on dark background */
+            --dark-text: #FFFFFF; /* Pure White */
+            --light-text: #E3F2FD; /* Very Light Blue */
 
-            --header-footer-bg: var(--primary-bg); /* Header and footer use deepest blue */
-            --header-footer-text: var(--light-text); /* White text on header/footer */
+            --header-footer-bg: #000000; /* Black for header/footer in dark mode */
+            --header-footer-text: var(--dark-text); /* White text on black */
 
-            /* Dark Theme Poetry Card Colors - Adjusted for visibility */
-            --poetry-card-bg: #2a2a2a; /* Slightly lighter dark grey for cards in dark theme */
-            --poetry-card-text: #ffffff; /* White text on dark cards */
+            /* Dark Theme Poetry Card Colors - Blue-gray */
+            --poetry-card-bg: #202A44; /* Dark blue-gray */
+            --poetry-card-text: #F0F8FF; /* AliceBlue for crisp text */
 
-            --alert-bg: #1565c0; /* Darker blue for alert background */
-            --alert-text: #ffffff; /* White text for alert */
-            --alert-accent: #ffeb3b; /* A contrasting yellow/gold for alert accent */
+            /* Alert Background and Text */
+            --alert-bg: #000000; /* Black background for alert */
+            --alert-text: #FFFFFF; /* White text for alert */
+            --alert-accent: #FFEB3B; /* Contrasting Yellow/Gold for alert accent */
 
-            --square-border-top: #7986cb;
-            --square-border-right: #3f51b5;
-            --square-border-bottom: #1a237e;
-            --square-border-left: #283593;
+            /* Poetry Card Stroke Gradient Colors - Blue/Cyan/Magenta */
+            --stroke-gradient-start-dark: #00FFFF; /* Cyan */
+            --stroke-gradient-end-dark: #FF00FF; /* Magenta */
+
+            /* Footer Card Colors - Dark Theme */
+            --footer-card-bg: #1A237E; /* Deep Indigo */
+            --footer-card-text: #E0E7FF; /* Light text for contrast */
+
+            /* Alert Border/Glow Colors - Yellow */
+            --alert-glow-start-dark: #FFFF00; /* Pure Yellow */
+            --alert-glow-end-dark: #FFA500; /* Orange */
         }
 
-        /* Light Theme Overrides - Optimized Blue Palette */
+        /* Light Theme Overrides - Blue-Green (Teal/Aqua) Palette */
         html[data-theme="light"] {
-            --primary-bg: #e3f2fd; /* Very light blue for main background gradient start */
-            --secondary-bg: #bbdefb; /* Light blue */
-            --accent-color: #64b5f6; /* Medium light blue accent */
-            --hover-color: #2196f3; /* Bright blue for hover effects */
+            --primary-bg: #E0F2F7; /* Pale Cyan - very light */
+            --secondary-bg: #B2EBF2; /* Light Cyan */
+            --accent-color: #4DD0E1; /* Turquoise */
+            --hover-color: #00BCD4; /* Cyan */
 
-            --dark-text: #1a237e; /* Deep blue text for light backgrounds */
-            --light-text: #0d47a1; /* Darker blue for elements on light background */
+            --dark-text: #006064; /* Dark Cyan - for main text */
+            --light-text: #00838F; /* Darker Cyan - for elements on light background */
 
-            --header-footer-bg: #e3f2fd; /* Very light blue for header and footer */
-            --header-footer-text: var(--dark-text); /* Deep blue text on light header/footer */
+            --header-footer-bg: #E0F2F7; /* Pale Cyan for header and footer */
+            --header-footer-text: var(--dark-text); /* Dark Cyan text on light header/footer */
 
-            /* Light Theme Poetry Card Colors - White and Deep Blue */
-            --poetry-card-bg: #ffffff; /* White for cards in light theme */
-            --poetry-card-text: #1a237e; /* Deep blue text on white cards */
+            /* Light Theme Poetry Card Colors - White with Dark Teal text */
+            --poetry-card-bg: #FFFFFF; /* Pure white for clarity */
+            --poetry-card-text: var(--dark-text); /* Dark Cyan text for strong contrast */
 
-            --alert-bg: #bbdefb; /* Light blue for alert background */
-            --alert-text: #1a237e; /* Deep blue text for alert */
-            --alert-accent: #ffeb3b; /* Yellow/gold for alert accent */
+            /* Alert Background and Text */
+            --alert-bg: #000000; /* Black background for alert */
+            --alert-text: #FFFFFF; /* White text for alert */
+            --alert-accent: #FFEB3B; /* Contrasting Yellow/Gold for alert accent */
 
-            --square-border-top: #2196f3;
-            --square-border-right: #64b5f6;
-            --square-border-bottom: #bbdefb;
-            --square-border-left: #e3f2fd;
+            /* Poetry Card Stroke Gradient Colors for Light Theme - Teal/Light Blue */
+            --stroke-gradient-start-light: #26A69A; /* Teal Green */
+            --stroke-gradient-end-light: #29B6F6; /* Light Blue */
+
+            /* Footer Card Colors - Light Theme */
+            --footer-card-bg: #B2EBF2; /* Light Cyan, matching secondary bg */
+            --footer-card-text: var(--dark-text); /* Dark Cyan text for contrast */
+
+            /* Alert Border/Glow Colors - Yellow */
+            --alert-glow-start-light: #FFFF00; /* Pure Yellow */
+            --alert-glow-end-light: #FFA500; /* Orange */
         }
 
-        /* Dark Theme Specific Overrides for Header and Footer */
-        html[data-theme="dark"] header,
-        html[data-theme="dark"] footer {
-            background: #000000; /* Black background for header and footer in dark theme */
-            color: var(--dark-text); /* White text on black background */
-        }
-
-        html[data-theme="dark"] header h1 {
-            color: var(--dark-text); /* White text for header title in dark theme */
-        }
-
-        html[data-theme="dark"] nav a {
-            color: var(--dark-text); /* White text for nav links in dark theme */
-        }
-
-        html[data-theme="dark"] nav a:hover {
-            color: var(--accent-color); /* Accent color on hover in dark theme */
-        }
-
-        html[data-theme="dark"] nav a::after {
-            background: var(--accent-color); /* Accent color for underline in dark theme */
-        }
-
-        /* Dark Theme Buttons - Now Green */
-        html[data-theme="dark"] .theme-toggle-button,
-        html[data-theme="dark"] .whatsapp-button {
-            border-color: #4CAF50; /* Green border for buttons in dark theme */
-            color: #4CAF50; /* Green icon for buttons in dark theme */
-        }
-        html[data-theme="dark"] .theme-toggle-button:hover,
-        html[data-theme="dark"] .whatsapp-button:hover {
-            background-color: rgba(76, 175, 80, 0.1); /* Light green background on hover */
-            border-color: #388E3C; /* Darker green on hover */
-            color: #388E3C; /* Darker green on hover */
-        }
-
-        html[data-theme="dark"] footer p,
-        html[data-theme="dark"] footer a {
-            color: var(--dark-text); /* White text for footer in dark theme */
-        }
-        html[data-theme="dark"] footer a:hover {
-            color: var(--accent-color); /* Accent color on hover in dark theme */
-        }
-
-
+        /* Common Styles */
         body {
             font-family: 'Noto Nastaliq Urdu', sans-serif;
             background: linear-gradient(-45deg, var(--primary-bg), var(--secondary-bg), var(--accent-color), var(--dark-text));
-            background-size: 400% 400%; /* Make gradient larger for animation */
-            animation: gradientAnimation 15s ease infinite; /* Smooth, looping gradient animation */
-
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
             margin: 0;
             padding: 0;
             direction: rtl; /* Right-to-left for Urdu */
-            text-align: center;
-            min-height: 100vh; /* Ensure body takes full viewport height */
-            color: var(--dark-text); /* Default text color */
+            text-align: center; /* Align all inline/inline-block content to center */
+            min-height: 100vh;
+            color: var(--dark-text);
             position: relative;
-            transition: background 0.8s ease, color 0.8s ease; /* Smooth theme transition for body background and text */
+            transition: background 0.8s ease, color 0.8s ease;
         }
 
-        /* Gradient Animation Keyframes */
         @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -129,17 +101,22 @@
         }
 
         header {
-            background: var(--header-footer-bg); /* Dynamic header background */
-            color: var(--header-footer-text); /* Dynamic header text color */
-            padding: 20px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Stronger, more elegant shadow */
-            position: sticky; /* Make header sticky */
+            background: var(--header-footer-bg);
+            color: var(--header-footer-text);
+            padding: 15px 0; /* Adjusted padding for full width centering */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            position: sticky;
             top: 0;
-            z-index: 1000; /* Ensure header stays on top */
-            animation: headerSlideDown 0.8s ease-out forwards; /* Header animation on load */
-            padding-left: 100px; /* Increased padding for horizontal buttons */
-            transition: background-color 0.5s ease, color 0.5s ease; /* Smooth theme transition */
-            height: 110px; /* Increased height to accommodate stacked buttons */
+            z-index: 1000;
+            animation: headerSlideDown 0.8s ease-out forwards;
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+            min-height: 70px;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         @keyframes headerSlideDown {
@@ -147,47 +124,47 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
+        .header-content {
+            flex-grow: 1; /* Allows it to take available space if needed */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items within header-content */
+            justify-content: center;
+        }
+
         header h1 {
-            margin: -35px 0 0; /* Adjusted margin-top to move text further up */
-            font-size: 3.2em; /* Larger heading for impact */
-            color: var(--header-footer-text); /* Dynamic header title color */
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
-            letter-spacing: 2px; /* Slightly increased letter spacing */
-            font-weight: 900; /* Bolder font weight */
-            transition: color 0.5s ease; /* Smooth theme transition */
+            margin: 0;
+            font-size: 3.2em;
+            color: var(--header-footer-text);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+            font-weight: 900;
+            transition: color 0.5s ease;
         }
 
-        /* Theme switch container and button */
-        .theme-toggle-button-container {
-            position: absolute;
-            left: 20px; /* Position on the left */
-            top: 10px; /* Adjusted top position */
-            z-index: 1001; /* Ensure it's above other header elements */
-        }
-
-        .whatsapp-button-container {
-            position: absolute;
-            left: 20px; /* Position on the left */
-            top: 65px; /* Adjusted top position to be below theme toggle */
-            z-index: 1001; /* Ensure it's above other header elements */
+        .header-buttons {
+            display: flex; /* Make it a flex container */
+            flex-direction: row; /* Keep buttons side-by-side */
+            gap: 10px; /* Space between buttons */
+            margin-top: 10px; /* Space below title */
         }
 
         .theme-toggle-button,
-        .whatsapp-button { /* Apply common styles to both buttons */
+        .whatsapp-button {
             background: none;
-            border: 2px solid var(--header-footer-text); /* Border color based on header text */
+            border: 2px solid var(--header-footer-text);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
-            font-size: 1.5em;
-            color: var(--header-footer-text); /* Icon color based on header text */
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+            font-size: 1.6em;
+            color: var(--header-footer-text);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            text-decoration: none; /* Remove underline for anchor button */
+            text-decoration: none;
         }
 
         .theme-toggle-button:hover,
@@ -195,6 +172,7 @@
             background-color: rgba(255, 255, 255, 0.1);
             border-color: var(--hover-color);
             color: var(--hover-color);
+            transform: scale(1.05);
         }
 
         /* Icon for the theme toggle button */
@@ -202,123 +180,170 @@
             transition: transform 0.3s ease;
         }
         html[data-theme="light"] .theme-toggle-button .icon {
-            transform: rotate(360deg); /* Spin icon on theme change */
+            transform: rotate(360deg);
         }
 
+        /* Dark Theme Buttons - Now Green */
+        html[data-theme="dark"] .theme-toggle-button,
+        html[data-theme="dark"] .whatsapp-button {
+            border-color: #4CAF50;
+            color: #4CAF50;
+        }
+        html[data-theme="dark"] .theme-toggle-button:hover,
+        html[data-theme="dark"] .whatsapp-button:hover {
+            background-color: rgba(76, 175, 80, 0.1);
+            border-color: #388E3C;
+            color: #388E3C;
+        }
 
         nav {
-            margin-top: -15px; /* Adjusted margin-top to move nav links up */
-            transition: margin-top 0.5s ease; /* Smooth transition for nav */
-        }
-
-        nav a {
-            color: var(--header-footer-text); /* Dynamic nav link color */
-            margin: 0 18px; /* More spacing */
-            text-decoration: none;
-            font-size: 1.3em; /* Slightly larger font */
-            transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover */
-            position: relative; /* For underline effect */
-            padding-bottom: 5px; /* Space for underline */
-            display: inline-block; /* Required for transform */
-        }
-
-        nav a:hover {
-            color: var(--hover-color);
-            transform: translateY(-2px); /* Lift slightly on hover */
-        }
-
-        /* Underline effect on hover */
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            display: block;
-            margin: auto;
-            background: var(--hover-color);
-            transition: width 0.3s ease;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-
-        nav a:hover::after {
-            width: 100%;
+            display: none; /* Hide navigation completely */
         }
 
         .poetry-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            padding: 30px 10px; /* More padding */
+            justify-content: center; /* Centers poetry cards */
+            padding: 30px 10px;
         }
 
         .poetry-card {
-            background: var(--poetry-card-bg); /* Dynamic card background */
-            width: 280px; /* Reduced card width */
-            padding: 15px 25px; /* Reduced vertical padding */
-            margin: 20px; /* More margin */
-            border-radius: 12px; /* Slightly more rounded corners */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Softer, larger shadow */
-            transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.5s ease; /* Smooth theme transition */
-            text-align: right; /* Align text right for Urdu */
-            line-height: 1.8; /* Improved line spacing for readability */
+            background: var(--poetry-card-bg);
+            width: 280px;
+            padding: 15px 25px;
+            margin: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.5s ease;
+            text-align: center;
+            line-height: 1.8;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Distribute space */
-            /* AOS will handle initial animation, no need for custom cardFadeIn here */
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+
+        .poetry-card::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, var(--stroke-gradient-start-dark), var(--stroke-gradient-end-dark));
+            background-size: 200% 200%;
+            z-index: -1;
+            border-radius: 17px;
+            filter: blur(10px);
+            opacity: 0.5;
+            transition: all 0.5s ease;
+            animation: gradientShift 5s ease infinite alternate;
+        }
+
+        html[data-theme="light"] .poetry-card::before {
+            background: linear-gradient(45deg, var(--stroke-gradient-start-light), var(--stroke-gradient-end-light));
+        }
+
+        .poetry-card:hover::before {
+            filter: blur(15px);
+            opacity: 0.9;
+            transform: scale(1.02);
+            animation: none;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
         }
 
         .poetry-card:hover {
-            transform: scale(1.03) translateY(-5px); /* Lift and scale slightly */
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); /* More pronounced shadow on hover */
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
         }
 
         .poetry-card h3 {
-            color: var(--poetry-card-text); /* Dynamic poet name color */
-            font-size: 1.6em; /* Slightly larger poet name */
-            margin-bottom: 10px; /* Reduced margin below poet name */
-            border-bottom: 2px solid var(--accent-color); /* Underline for poet name */
-            padding-bottom: 5px; /* Reduced padding below poet name */
-            display: inline-block; /* To make border-bottom only cover text */
-            text-align: center; /* Center the poet's name */
-            width: 100%; /* Ensure it takes full width to center effectively */
-            transition: color 0.5s ease, border-color 0.5s ease; /* Smooth theme transition */
+            color: var(--poetry-card-text);
+            font-size: 1.6em;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+            transition: color 0.5s ease, border-color 0.5s ease;
         }
 
         .poetry-card p {
-            color: var(--poetry-card-text); /* Dynamic poetry text color */
-            font-size: 1.3em; /* Larger poetry text */
-            line-height: 1.6; /* Reduced line height for compactness */
-            margin-top: 10px; /* Reduced margin above poetry text */
-            text-align: center; /* Center the poetry text */
-            transition: color 0.5s ease; /* Smooth theme transition */
+            color: var(--poetry-card-text);
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin-top: 10px;
+            text-align: center;
+            transition: color 0.5s ease;
+            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .share-options {
+            display: none; /* Hide share options */
         }
 
         footer {
-            background: var(--header-footer-bg); /* Dynamic footer background */
-            color: var(--header-footer-text); /* Dynamic footer text color */
-            padding: 15px; /* More padding for footer */
+            background: var(--header-footer-bg);
+            color: var(--header-footer-text);
+            padding: 15px;
             width: 100%;
-            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Shadow above footer */
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
             font-size: 0.95em;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap; /* Allow wrapping on small screens */
-            margin-top: auto; /* Push footer to the bottom */
-            transition: background-color 0.5s ease, color 0.5s ease; /* Smooth theme transition */
+            flex-wrap: wrap;
+            margin-top: auto;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
-        footer p, footer a {
-            margin: 5px 10px;
-            color: var(--header-footer-text); /* Dynamic footer text color */
+
+        /* New Footer Card Styles */
+        .footer-card {
+            background-color: var(--footer-card-bg);
+            color: var(--footer-card-text);
+            padding: 15px 25px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+            max-width: 350px;
+            width: 90%;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-card p,
+        .footer-card a {
+            margin: 0;
+            color: var(--footer-card-text);
             text-decoration: none;
-            transition: color 0.5s ease; /* Smooth theme transition */
+            transition: color 0.5s ease;
         }
-        footer a:hover {
+        .footer-card a:hover {
             color: var(--hover-color);
             text-decoration: underline;
         }
+
+        .footer-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
 
         /* --- Custom Alert Styles --- */
         .custom-alert-overlay {
@@ -327,11 +352,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay */
+            background-color: rgba(0, 0, 0, 0.7);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 2000; /* Ensure it's on top of everything */
+            z-index: 2000;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -343,88 +368,141 @@
         }
 
         .custom-alert-box {
-            background-color: var(--alert-bg); /* Dynamic alert background */
+            background-color: var(--alert-bg); /* Black background */
             color: var(--alert-text);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            max-width: 400px;
-            width: 90%; /* Responsive width */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            max-width: 300px;
+            width: 85%;
             text-align: center;
-            transform: scale(0.8); /* Start smaller for animation */
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transform: scale(0.7);
             opacity: 0;
-            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.3s ease, background-color 0.5s ease, border-color 0.5s ease; /* Smooth theme transition */
-            
-            /* Add the colorful border - adjusted for blue theme */
-            border-top: 8px solid var(--square-border-top);
-            border-right: 8px solid var(--square-border-right);
-            border-bottom: 8px solid var(--square-border-bottom);
-            border-left: 8px solid var(--square-border-left);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease, background-color 0.5s ease;
         }
 
         .custom-alert-overlay.show .custom-alert-box {
-            transform: scale(1); /* Scale up to normal size */
+            transform: scale(1);
             opacity: 1;
         }
 
+        /* Alert Box Glowing Border (::before pseudo-element) */
+        .custom-alert-box::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            background: linear-gradient(45deg, var(--alert-glow-start-dark), var(--alert-glow-end-dark)); /* Yellow gradient */
+            background-size: 200% 200%;
+            z-index: -1;
+            border-radius: 18px;
+            filter: blur(12px);
+            opacity: 0.7;
+            transition: all 0.5s ease;
+            animation: alertGlowShift 6s ease infinite alternate;
+        }
+
+        html[data-theme="light"] .custom-alert-box::before {
+            background: linear-gradient(45deg, var(--alert-glow-start-light), var(--alert-glow-end-light)); /* Yellow gradient */
+        }
+
+        .custom-alert-box:hover::before {
+            filter: blur(18px);
+            opacity: 1;
+            transform: scale(1.02);
+            animation: none;
+        }
+
+        @keyframes alertGlowShift {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
         .custom-alert-box h2 {
-            color: var(--alert-accent); /* Accent color for heading (yellow/gold) */
-            font-size: 2em;
-            margin-bottom: 15px;
+            color: var(--alert-accent);
+            font-size: 1.8em;
+            margin-bottom: 10px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-            transition: color 0.5s ease; /* Smooth theme transition */
+            transition: color 0.5s ease;
         }
 
-        /* Alert message text with color changing animation */
         .custom-alert-box p {
-            font-size: 1.5em; /* Larger, attractive message text */
-            margin-bottom: 25px;
-            line-height: 1.6;
-            font-weight: bold; /* Make text bold */
-            color: var(--alert-text); /* Default color, will be overridden by animation */
-            animation: colorChange 2s infinite alternate; /* Increased speed: 2s duration */
-            transition: color 0.5s ease; /* Smooth theme transition for default color */
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            font-weight: bold;
+            color: var(--alert-text);
+            animation: colorChange 2s infinite alternate;
+            transition: color 0.5s ease;
         }
 
-        /* Keyframes for color changing animation */
         @keyframes colorChange {
-            0%   { color: #ffeb3b; } /* Yellow */
-            25%  { color: #e53935; } /* Red */
-            50%  { color: #43a047; } /* Green */
-            75%  { color: #fb8c00; } /* Orange */
-            100% { color: #2196f3; } /* Blue */
+            0%   { color: #ffeb3b; }
+            25%  { color: #e53935; }
+            50%  { color: #43a047; }
+            75%  { color: #fb8c00; }
+            100% { color: #2196f3; }
         }
-
 
         .custom-alert-box button {
-            background-color: var(--alert-accent); /* Yellow/gold button */
-            color: var(--dark-text); /* Dark text on button */
+            background-color: var(--alert-accent);
+            color: var(--dark-text);
             border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
+            padding: 10px 20px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 1.1em;
-            transition: background-color 0.3s ease, transform 0.2s ease, color 0.5s ease; /* Smooth theme transition */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.2s ease, color 0.5s ease;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
         }
 
         .custom-alert-box button:hover {
-            background-color: #fdd835; /* Slightly darker yellow on hover */
+            background-color: #fdd835;
             transform: translateY(-2px);
         }
 
+        .share-modal-overlay {
+            display: none; /* Hide share modal overlay */
+        }
+
+
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
+            header {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+                min-height: 60px;
             }
-            nav a {
-                font-size: 1.1em;
-                margin: 0 10px;
+            .header-content {
+                margin-bottom: 0;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+            nav {
+                display: none;
+            }
+            .header-buttons {
+                flex-direction: row;
+                gap: 8px;
+                margin-right: 0;
+                margin-top: 10px;
+            }
+            .theme-toggle-button,
+            .whatsapp-button {
+                width: 38px;
+                height: 38px;
+                font-size: 1.3em;
             }
             .poetry-card {
-                width: 90%; /* Wider on smaller screens */
-                margin: 15px 0; /* Adjust margin for mobile */
-                padding: 10px 15px; /* Further reduced padding for mobile */
+                width: 90%;
+                margin: 15px 0;
+                padding: 10px 15px;
             }
             .poetry-card h3 {
                 font-size: 1.4em;
@@ -433,48 +511,46 @@
                 font-size: 1.1em;
             }
             .custom-alert-box {
-                padding: 20px;
-                border-width: 5px; /* Thinner border on mobile */
+                padding: 15px;
+                max-width: 280px;
+            }
+            .custom-alert-box::before {
+                top: -6px;
+                left: -6px;
+                right: -6px;
+                bottom: -6px;
+                border-radius: 15px;
+                filter: blur(8px);
             }
             .custom-alert-box h2 {
-                font-size: 1.6em;
+                font-size: 1.5em;
             }
             .custom-alert-box p {
-                font-size: 1.2em;
+                font-size: 1.1em;
             }
-            .theme-toggle-button-container {
-                left: 10px;
-                top: 10px; /* Adjust for mobile header */
-            }
-            .whatsapp-button-container {
-                left: 10px;
-                top: 55px; /* Adjusted for mobile to be below theme toggle */
-            }
-            header {
-                padding-left: 60px; /* Adjust header padding for mobile */
-                height: 90px; /* Adjust height for mobile */
-            }
-            nav {
-                margin-top: 0; /* Reset margin for mobile nav */
+            .footer-card {
+                max-width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 10px 15px;
+                font-size: 1em;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="theme-toggle-button-container">
+        <div class="header-content">
+            <h1>اردو شاعری</h1>
+        </div>
+        <div class="header-buttons">
             <button id="themeToggle" class="theme-toggle-button">
-                <span class="icon">🌙</span> </button>
-        </div>
-        <div class="whatsapp-button-container">
+                <span class="icon">🌙</span>
+            </button>
             <a href="https://wa.me/+923001881920?text=Hello%20I%20have%20a%20question" target="_blank" class="whatsapp-button" title="WhatsApp پر رابطہ کریں">
-                <span class="icon">💬</span> </a>
+                <span class="icon">💬</span>
+            </a>
         </div>
-        <h1>اردو شاعری</h1>
-        <nav>
-            <a href="mailto:akramlala300@gmail.com?subject=Hello%20Akram&body=This%20is%20a%20test%20email">ای میل کریں</a>
-            <a href="https://wa.me/+923001881920?text=Hello%20I%20have%20a%20question" target="_blank">رابطہ کریں</a>
-        </nav>
     </header>
 
     <div class="poetry-container">
@@ -666,24 +742,25 @@
             <h3>مرزا غالب</h3>
             <p>آہ کو چاہیے اک عمر اثر ہونے تک<br>کون جیتا ہے تری زلف کے سر ہونے تک</p>
         </div>
-        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
-            <h3>علامہ اقبال</h3>
-            <p> تری دعا سے قضا تو بدل نہیں سکتی<br> مگر ہے اس سے یہ ممکن کہ تو بدل جائے</p>
-        </div>
     </div>
 
     <footer>
-        <p>© 2025 اردو شاعری. جملہ حقوق محفوظ ہیں۔ by AKRAM KHAN 923001881920</p>
-        <a href="https://wa.me/+923001881920?text=Hello%20I%20have%20a%20question" target="_blank">رابطہ کریں (WhatsApp)</a>
+        <div class="footer-card">
+            <p>اردو شاعری سے محبت کے ساتھ بنایا گیا</p>
+            <p>© 2025 اردو شاعری. جملہ حقوق محفوظ ہیں۔</p>
+            <a href="https://wa.me/+923001881920?text=Hello%20I%20have%20a%20question" target="_blank">رابطہ کریں (WhatsApp)</a>
+        </div>
     </footer>
 
     <div id="customAlertOverlay" class="custom-alert-overlay">
         <div class="custom-alert-box">
             <h2 id="alertTitle">نوٹ</h2>
-            <p id="alertMessage">!!𝐌𝐀𝐃𝐄 𝐁𝐘 𝐀𝐊𝐑𝐀𝐌 𝐊𝐇𝐀𝐍</p>
+            <p id="alertMessage">𝐌𝐀𝐃𝐄 𝐁𝐘 𝐀𝐊𝐑𝐀𝐌 𝐊𝐇𝐀𝐍!!!</p>
             <button id="alertCloseButton">بند کریں</button>
         </div>
     </div>
+
+    <div id="shareModalOverlay" class="share-modal-overlay"></div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -760,15 +837,18 @@
         // Add event listener to the toggle button
         themeToggleBtn.addEventListener('click', toggleTheme);
 
-        // کارڈ پر کلک کرنے پر کسٹم الرٹ دکھانے کے لیے
+        // Existing click listener for poetry cards (for alert)
         document.querySelectorAll('.poetry-card').forEach(card => {
-            card.addEventListener('click', () => {
-                // یہاں آپ کوئی بھی پیغام دے سکتے ہیں
-                showAlert('<b>𝐌𝐀𝐃𝐄 𝐁Y <br>𝐀𝐊𝐑𝐀𝐌 𝐊𝐇𝐀𝐍!!!</b>');
+            card.addEventListener('click', (event) => {
+                // The share button class check is no longer strictly needed as share buttons are removed,
+                // but keeping it won't harm.
+                if (!event.target.classList.contains('share-button')) {
+                    showAlert('<b>!!!𝐌𝐀𝐃𝐄 𝐁𝐘 𝐀𝐊𝐑𝐀𝐌 𝐊𝐇𝐀𝐍</b>');
+                }
             });
         });
     </script>
 </body>
 </html>
 
-    
+                                                   
