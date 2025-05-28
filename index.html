@@ -3,95 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> اردو شاعری کا خزانہ</title>
+    <title>اردو شاعری</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jameel+Noori+Nastaleeq&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lateef&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* Default (Dark) Theme Variables - Deep Blue/Indigo */
+        /* Default (Dark) Theme Variables - Shades of Blue */
         :root {
-            --primary-bg: #0D47A1; /* Darker Blue */
-            --secondary-bg: #1565C0; /* Medium Dark Blue */
-            --accent-color: #1976D2; /* Bright Blue Accent */
+            --primary-bg: #0D47A1; /* Deep Navy Blue */
+            --secondary-bg: #1565C0; /* Darker Medium Blue */
+            --accent-color: #1E88E5; /* Medium Blue */
             --hover-color: #42A5F5; /* Lighter Blue for hover */
 
-            --dark-text: #FFFFFF; /* Pure White */
-            --light-text: #E3F2FD; /* Very Light Blue */
+            --dark-text: #E3F2FD; /* Very Light Blue-Gray */
+            --light-text: #BBDEFB; /* Light Blue */
 
-            --header-footer-bg: #000000; /* Black for header/footer in dark mode */
-            --header-footer-text: var(--dark-text); /* White text on black */
+            --header-footer-bg: #0B3C91; /* Darker shade of primary-bg for header/footer */
+            --header-footer-text: var(--dark-text);
 
-            /* Dark Theme Poetry Card Colors - Blue-gray */
-            --poetry-card-bg: #202A44; /* Dark blue-gray */
-            --poetry-card-text: #F0F8FF; /* AliceBlue for crisp text */
+            /* Dark Theme Poetry Card Colors */
+            --poetry-card-bg: #1A237E; /* Deep Indigo - keeping this for contrast */
+            --poetry-card-text: #E0E0E0; /* Light Gray */
 
             /* Alert Background and Text */
-            --alert-bg: #000000; /* Black background for alert */
-            --alert-text: #FFFFFF; /* White text for alert */
-            --alert-accent: #FFEB3B; /* Contrasting Yellow/Gold for alert accent */
-
-            /* Poetry Card Stroke Gradient Colors - Blue/Cyan/Magenta */
-            --stroke-gradient-start-dark: #00FFFF; /* Cyan */
-            --stroke-gradient-end-dark: #FF00FF; /* Magenta */
+            --alert-bg: #000000;
+            --alert-text: #FFFFFF;
+            --alert-accent: #FFEB3B;
 
             /* Footer Card Colors - Dark Theme */
-            --footer-card-bg: #1A237E; /* Deep Indigo */
-            --footer-card-text: #E0E7FF; /* Light text for contrast */
+            --footer-card-bg: #0D47A1; /* Deep Navy Blue */
+            --footer-card-text: #E3F2FD; /* Very Light Blue-Gray */
 
-            /* Alert Border/Glow Colors - Yellow */
-            --alert-glow-start-dark: #FFFF00; /* Pure Yellow */
-            --alert-glow-end-dark: #FFA500; /* Orange */
+            /* Alert Border/Glow Colors - Black */
+            --alert-glow-start-dark: #000000;
+            --alert-glow-end-dark: #000000;
+
+            /* Dynamic Stroke Colors for Poetry Cards (set by JS) */
+            --card-stroke-start: transparent;
+            --card-stroke-end: transparent;
+
+            /* Welcome Intro Colors */
+            --welcome-overlay-bg-dark: rgba(13, 71, 161, 0.97); /* Slightly more opaque */
+            /* Welcome text color will be a gradient, so specific variable not needed here */
         }
 
-        /* Light Theme Overrides - Blue-Green (Teal/Aqua) Palette */
+        /* Light Theme Overrides - Lighter Shades of Blue */
         html[data-theme="light"] {
-            --primary-bg: #E0F2F7; /* Pale Cyan - very light */
-            --secondary-bg: #B2EBF2; /* Light Cyan */
-            --accent-color: #4DD0E1; /* Turquoise */
-            --hover-color: #00BCD4; /* Cyan */
+            --primary-bg: #E3F2FD; /* Very Light Sky Blue */
+            --secondary-bg: #BBDEFB; /* Light Blue */
+            --accent-color: #90CAF9; /* Soft Blue */
+            --hover-color: #64B5F6; /* Brighter Soft Blue for hover */
 
-            --dark-text: #006064; /* Dark Cyan - for main text */
-            --light-text: #00838F; /* Darker Cyan - for elements on light background */
+            --dark-text: #0D47A1; /* Deep Navy Blue - for strong contrast */
+            --light-text: #1565C0; /* Darker Medium Blue */
 
-            --header-footer-bg: #E0F2F7; /* Pale Cyan for header and footer */
-            --header-footer-text: var(--dark-text); /* Dark Cyan text on light header/footer */
+            --header-footer-bg: #B3E5FC; /* Light Cyan Blue for header/footer */
+            --header-footer-text: var(--dark-text);
 
-            /* Light Theme Poetry Card Colors - White with Dark Teal text */
-            --poetry-card-bg: #FFFFFF; /* Pure white for clarity */
-            --poetry-card-text: var(--dark-text); /* Dark Cyan text for strong contrast */
+            /* Light Theme Poetry Card Colors */
+            --poetry-card-bg: #FFFFFF; /* Pure white */
+            --poetry-card-text: var(--dark-text);
 
             /* Alert Background and Text */
-            --alert-bg: #000000; /* Black background for alert */
-            --alert-text: #FFFFFF; /* White text for alert */
-            --alert-accent: #FFEB3B; /* Contrasting Yellow/Gold for alert accent */
-
-            /* Poetry Card Stroke Gradient Colors for Light Theme - Teal/Light Blue */
-            --stroke-gradient-start-light: #26A69A; /* Teal Green */
-            --stroke-gradient-end-light: #29B6F6; /* Light Blue */
+            --alert-bg: #000000;
+            --alert-text: #FFFFFF;
+            --alert-accent: #FFEB3B;
 
             /* Footer Card Colors - Light Theme */
-            --footer-card-bg: #B2EBF2; /* Light Cyan, matching secondary bg */
-            --footer-card-text: var(--dark-text); /* Dark Cyan text for contrast */
+            --footer-card-bg: #BBDEFB; /* Light Blue */
+            --footer-card-text: var(--dark-text);
 
-            /* Alert Border/Glow Colors - Yellow */
-            --alert-glow-start-light: #FFFF00; /* Pure Yellow */
-            --alert-glow-end-light: #FFA500; /* Orange */
+            /* Alert Border/Glow Colors - Black */
+            --alert-glow-start-light: #000000;
+            --alert-glow-end-light: #000000;
+
+            /* Welcome Intro Colors */
+            --welcome-overlay-bg-light: rgba(227, 242, 253, 0.97); /* Slightly more opaque */
         }
 
         /* Common Styles */
         body {
             font-family: 'Noto Nastaliq Urdu', sans-serif;
-            background: linear-gradient(-45deg, var(--primary-bg), var(--secondary-bg), var(--accent-color), var(--dark-text));
+            background: linear-gradient(-45deg, var(--primary-bg), var(--secondary-bg), var(--accent-color), var(--primary-bg));
             background-size: 400% 400%;
             animation: gradientAnimation 15s ease infinite;
             margin: 0;
             padding: 0;
-            direction: rtl; /* Right-to-left for Urdu */
-            text-align: center; /* Align all inline/inline-block content to center */
+            direction: rtl;
+            text-align: center;
             min-height: 100vh;
             color: var(--dark-text);
             position: relative;
             transition: background 0.8s ease, color 0.8s ease;
+            overflow-x: hidden;
         }
 
         @keyframes gradientAnimation {
@@ -100,19 +105,74 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* Welcome Intro Styles */
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--welcome-overlay-bg-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+            cursor: pointer;
+        }
+        html[data-theme="light"] .welcome-overlay {
+            background-color: var(--welcome-overlay-bg-light);
+        }
+
+        .welcome-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .welcome-text {
+            font-family: 'Lateef', 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', cursive;
+            font-size: clamp(4rem, 18vw, 10rem); /* Increased size */
+            font-weight: bold;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+            animation: fadeInScaleUp 1.5s ease-out forwards;
+            padding: 20px;
+            /* Color Gradient for Welcome Text */
+            background: linear-gradient(45deg, #FFD700, #FF69B4, #00FFFF, #ADFF2F); /* Gold, Hot Pink, Cyan, GreenYellow */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.3)); /* Softer drop shadow for gradient text */
+        }
+
+
+        @keyframes fadeInScaleUp {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) rotate(-5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+
         header {
             background: var(--header-footer-bg);
             color: var(--header-footer-text);
-            padding: 15px 0; /* Adjusted padding for full width centering */
+            padding: 15px 0;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
             position: sticky;
             top: 0;
             z-index: 1000;
             animation: headerSlideDown 0.8s ease-out forwards;
             display: flex;
-            flex-direction: column; /* Stack content vertically */
-            justify-content: center; /* Center content vertically */
-            align-items: center; /* Center content horizontally */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             min-height: 70px;
             transition: background-color 0.5s ease, color 0.5s ease;
             width: 100%;
@@ -125,10 +185,10 @@
         }
 
         .header-content {
-            flex-grow: 1; /* Allows it to take available space if needed */
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center items within header-content */
+            align-items: center;
             justify-content: center;
         }
 
@@ -143,10 +203,10 @@
         }
 
         .header-buttons {
-            display: flex; /* Make it a flex container */
-            flex-direction: row; /* Keep buttons side-by-side */
-            gap: 10px; /* Space between buttons */
-            margin-top: 10px; /* Space below title */
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            margin-top: 10px;
         }
 
         .theme-toggle-button,
@@ -174,8 +234,12 @@
             color: var(--hover-color);
             transform: scale(1.05);
         }
+        html[data-theme="light"] .theme-toggle-button:hover,
+        html[data-theme="light"] .whatsapp-button:hover {
+             background-color: rgba(0, 0, 0, 0.05);
+        }
 
-        /* Icon for the theme toggle button */
+
         .theme-toggle-button .icon {
             transition: transform 0.3s ease;
         }
@@ -183,7 +247,6 @@
             transform: rotate(360deg);
         }
 
-        /* Dark Theme Buttons - Now Green */
         html[data-theme="dark"] .theme-toggle-button,
         html[data-theme="dark"] .whatsapp-button {
             border-color: #4CAF50;
@@ -197,13 +260,13 @@
         }
 
         nav {
-            display: none; /* Hide navigation completely */
+            display: none;
         }
 
         .poetry-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center; /* Centers poetry cards */
+            justify-content: center;
             padding: 30px 10px;
         }
 
@@ -233,7 +296,7 @@
             left: -5px;
             right: -5px;
             bottom: -5px;
-            background: linear-gradient(45deg, var(--stroke-gradient-start-dark), var(--stroke-gradient-end-dark));
+            background: linear-gradient(45deg, var(--card-stroke-start), var(--card-stroke-end));
             background-size: 200% 200%;
             z-index: -1;
             border-radius: 17px;
@@ -241,10 +304,6 @@
             opacity: 0.5;
             transition: all 0.5s ease;
             animation: gradientShift 5s ease infinite alternate;
-        }
-
-        html[data-theme="light"] .poetry-card::before {
-            background: linear-gradient(45deg, var(--stroke-gradient-start-light), var(--stroke-gradient-end-light));
         }
 
         .poetry-card:hover::before {
@@ -275,6 +334,10 @@
             width: 100%;
             transition: color 0.5s ease, border-color 0.5s ease;
         }
+        html[data-theme="light"] .poetry-card h3 {
+            border-bottom-color: var(--secondary-bg);
+        }
+
 
         .poetry-card p {
             color: var(--poetry-card-text);
@@ -287,7 +350,7 @@
         }
 
         .share-options {
-            display: none; /* Hide share options */
+            display: none;
         }
 
         footer {
@@ -306,7 +369,6 @@
             transition: background-color 0.5s ease, color 0.5s ease;
         }
 
-        /* New Footer Card Styles */
         .footer-card {
             background-color: var(--footer-card-bg);
             color: var(--footer-card-text);
@@ -344,8 +406,16 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
 
+        .akram-logo {
+            font-size: 0.85em;
+            margin-top: 12px;
+            opacity: 0.8;
+            font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', sans-serif;
+            color: var(--footer-card-text); /* Inherits color from footer card */
+            letter-spacing: 0.5px;
+        }
 
-        /* --- Custom Alert Styles --- */
+
         .custom-alert-overlay {
             position: fixed;
             top: 0;
@@ -368,7 +438,7 @@
         }
 
         .custom-alert-box {
-            background-color: var(--alert-bg); /* Black background */
+            background-color: var(--alert-bg);
             color: var(--alert-text);
             padding: 20px;
             border-radius: 12px;
@@ -389,7 +459,6 @@
             opacity: 1;
         }
 
-        /* Alert Box Glowing Border (::before pseudo-element) */
         .custom-alert-box::before {
             content: '';
             position: absolute;
@@ -397,7 +466,7 @@
             left: -8px;
             right: -8px;
             bottom: -8px;
-            background: linear-gradient(45deg, var(--alert-glow-start-dark), var(--alert-glow-end-dark)); /* Yellow gradient */
+            background: linear-gradient(45deg, var(--alert-glow-start-dark), var(--alert-glow-end-dark));
             background-size: 200% 200%;
             z-index: -1;
             border-radius: 18px;
@@ -408,7 +477,7 @@
         }
 
         html[data-theme="light"] .custom-alert-box::before {
-            background: linear-gradient(45deg, var(--alert-glow-start-light), var(--alert-glow-end-light)); /* Yellow gradient */
+            background: linear-gradient(45deg, var(--alert-glow-start-light), var(--alert-glow-end-light));
         }
 
         .custom-alert-box:hover::before {
@@ -460,6 +529,10 @@
             transition: background-color 0.3s ease, transform 0.2s ease, color 0.5s ease;
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
         }
+        html[data-theme="light"] .custom-alert-box button {
+            color: #212121;
+        }
+
 
         .custom-alert-box button:hover {
             background-color: #fdd835;
@@ -467,78 +540,81 @@
         }
 
         .share-modal-overlay {
-            display: none; /* Hide share modal overlay */
+            display: none;
         }
 
 
         @media (max-width: 768px) {
             header {
-                flex-direction: column;
-                align-items: center;
                 padding: 10px;
                 min-height: 60px;
             }
-            .header-content {
-                margin-bottom: 0;
-            }
             header h1 {
-                font-size: 1.8em;
-            }
-            nav {
-                display: none;
+                font-size: 2.2em;
             }
             .header-buttons {
-                flex-direction: row;
                 gap: 8px;
-                margin-right: 0;
-                margin-top: 10px;
+                margin-top: 8px;
             }
             .theme-toggle-button,
             .whatsapp-button {
-                width: 38px;
-                height: 38px;
-                font-size: 1.3em;
+                width: 40px;
+                height: 40px;
+                font-size: 1.4em;
             }
             .poetry-card {
                 width: 90%;
-                margin: 15px 0;
-                padding: 10px 15px;
+                margin: 15px auto;
+                padding: 12px 20px;
             }
             .poetry-card h3 {
-                font-size: 1.4em;
+                font-size: 1.5em;
+            }
+            .poetry-card p {
+                font-size: 1.2em;
+            }
+            .custom-alert-box {
+                padding: 18px;
+                max-width: 90%;
+            }
+            .custom-alert-box h2 {
+                font-size: 1.6em;
+            }
+            .custom-alert-box p {
+                font-size: 1.2em;
+            }
+            .footer-card {
+                padding: 12px 20px;
+                font-size: 1em;
+            }
+        }
+         @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+             .welcome-text {
+                font-size: clamp(3rem, 15vw, 7rem); /* Adjusted for smaller screens */
+            }
+            .poetry-card h3 {
+                font-size: 1.3em;
             }
             .poetry-card p {
                 font-size: 1.1em;
             }
-            .custom-alert-box {
-                padding: 15px;
-                max-width: 280px;
-            }
-            .custom-alert-box::before {
-                top: -6px;
-                left: -6px;
-                right: -6px;
-                bottom: -6px;
-                border-radius: 15px;
-                filter: blur(8px);
-            }
-            .custom-alert-box h2 {
-                font-size: 1.5em;
+             .custom-alert-box h2 {
+                font-size: 1.4em;
             }
             .custom-alert-box p {
                 font-size: 1.1em;
-            }
-            .footer-card {
-                max-width: 90%;
-                margin-left: auto;
-                margin-right: auto;
-                padding: 10px 15px;
-                font-size: 1em;
             }
         }
     </style>
 </head>
 <body>
+    <div id="welcomeOverlay" class="welcome-overlay">
+        <div class="welcome-text">خوش آمدید</div>
+    </div>
+
     <header>
         <div class="header-content">
             <h1>اردو شاعری</h1>
@@ -742,13 +818,315 @@
             <h3>مرزا غالب</h3>
             <p>آہ کو چاہیے اک عمر اثر ہونے تک<br>کون جیتا ہے تری زلف کے سر ہونے تک</p>
         </div>
-    </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>فراق گورکھپوری</h3>
+            <p>ابھی کچھ اور کرشمے ہیں تری بیداری کے<br>وقت کہتا ہے کہ کچھ دیر ٹھہر جا ابھی</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>احمد ندیم قاسمی</h3>
+            <p>میں نے ہر بار تجھ سے ملتے وقت<br>تجھ سے ملنے کی آرزو کی ہے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>ساحر لدھیانوی</h3>
+            <p>میں پل دو پل کا شاعر ہوں<br>پل دو پل میری کہانی ہے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>پروین شاکر</h3>
+            <p>کوئی خوشبو کوئی جھونکا کوئی آہٹ ہی نہیں<br>اب تو اس راہ سے گزرتا بھی نہیں کوئی</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>محسن نقوی</h3>
+            <p>آنکھیں ہیں کہ چھلکتی ہیں ساون کی طرح<br>دل ہے کہ دھڑکتا ہے بے چین کی طرح</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>حبیب جالب</h3>
+            <p>ظلمت کو ضیا صر صر کو صبا بندہ کو خدا کیا لکھنا<br>ایک حشر بپا ہے اور میں بھی خاموش تماشا دیکھوں</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>ادا جعفری</h3>
+            <p>جو گزاری نہ جا سکی ہم سے<br>ہم نے وہ زندگی گزاری ہے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>جون ایلیا</h3>
+            <p>بہت عجیب ہیں یہ بندشیں محبت کی<br>نہ تو نے قید کیا اور نہ میں آزاد ہوا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>ناصر کاظمی</h3>
+            <p>شام ہوئی ہے تو پھر شام کا منظر دیکھو<br>شہر میں ایک نیا خواب نیا گھر دیکھو</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>فیض احمد فیض</h3>
+            <p>اور بھی دکھ ہیں زمانے میں محبت کے سوا<br>راحتیں اور بھی ہیں وصل کی راحت کے سوا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>احمد فراز</h3>
+            <p>تم بھی خفا ہو لوگ بھی خفا ہیں کیا کریں<br>یہ زندگی ہے اس کا گلہ ہے کیا کریں</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>پروین شاکر</h3>
+            <p>چہرہ میرا تھا نگاہیں اس کی<br>خامشی میں بھی وہ باتیں اس کی</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>مرزا غالب</h3>
+            <p>مدت ہوئی ہے یار کو مہماں کیے ہوئے<br>جوش قدح سے بزم چراغاں کیے ہوئے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>علامہ اقبال</h3>
+            <p>نہیں ہے نا امید اقبال اپنی کشت ویراں سے<br>ذرا نم ہو تو یہ مٹی بہت زرخیز ہے ساقی</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>میر تقی میر</h3>
+            <p>الٹی ہو گئیں سب تدبیریں کچھ نہ دوا نے کام کیا<br>دیکھا اس بیماری دل نے آخر کام تمام کیا</p>
+        </div>
+
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>جون ایلیا</h3>
+            <p>کیا دُکھ ہے سمندر کو بتا بھی نہیں سکتا<br>آنسو کی طرح آنکھ تک آ بھی نہیں سکتا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>منیر نیازی</h3>
+            <p>کچھ شہر کے لوگ بھی ظالم تھے کچھ مجھے بھی مرنے کا شوق تھا<br>اب کیسے کہوں کہ کیا ہوا، بس یوں سمجھو کہ سب کچھ ٹھیک تھا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>احمد فراز</h3>
+            <p>سلسلے توڑ گیا وہ سبھی جاتے جاتے<br>ورنہ اتنے تو مراسم تھے کہ آتے جاتے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>پروین شاکر</h3>
+            <p>بارش ہوئی تو پھولوں کے تن چاک ہو گئے<br>موسم کے ہاتھ بھیگ کے نمناک ہو گئے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>فیض احمد فیض</h3>
+            <p>یہ داغ داغ اجالا یہ شب گزیدہ سحر<br>وہ انتظار تھا جس کا یہ وہ سحر تو نہیں</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>بہادر شاہ ظفر</h3>
+            <p>لگتا نہیں ہے جی مرا اُجڑے دیار میں<br>کس کی بنی ہے عالمِ ناپائیدار میں</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>مومن خان مومن</h3>
+            <p>تم مرے پاس ہوتے ہو گویا<br>جب کوئی دوسرا نہیں ہوتا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>اکبر الہ آبادی</h3>
+            <p>ہم آہ بھی کرتے ہیں تو ہو جاتے ہیں بدنام<br>وہ قتل بھی کرتے ہیں تو چرچا نہیں ہوتا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>جوش ملیح آبادی</h3>
+            <p>کام ہے میرا تغیر، نام ہے میرا شباب<br>میرا نعرہ، انقلاب و انقلاب و انقلاب</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>حفیظ جالندھری</h3>
+            <p>دیکھا جو تیر کھا کے کمیں گاہ کی طرف<br>اپنے ہی دوستوں سے ملاقات ہو گئی</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>وصی شاہ</h3>
+            <p>کاش میں تیرے حسین ہاتھ کا کنگن ہوتا<br>تو بڑے پیار سے، چاؤ سے، بڑے مان کے ساتھ</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>امجد اسلام امجد</h3>
+            <p>وہ ترے نصیب کی بارشیں کسی اور چھت پہ برس گئیں<br>دلِ بے خبر مری بات سن اسے بھول جا اسے بھول جا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>ساغر صدیقی</h3>
+            <p>زندگی جبرِ مسلسل کی طرح کاٹی ہے<br>جانے کس جرم کی پائی ہے سزا یاد نہیں</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>قتیل شفائی</h3>
+            <p>اپنے ہاتھوں کی لکیروں میں سجا لے مجھ کو<br>میں ہوں تیرا تو نصیب اپنا بنا لے مجھ کو</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>بشیر بدر</h3>
+            <p>اجالے اپنی یادوں کے ہمارے ساتھ رہنے دو<br>نہ جانے کس گلی میں زندگی کی شام ہو جائے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>مصطفیٰ زیدی</h3>
+            <p>انہی پتھروں پہ چل کر اگر آ سکو تو آؤ<br>مرے گھر کے راستے میں کوئی کہکشاں نہیں ہے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>ادا جعفری</h3>
+            <p>ہونٹوں پہ کبھی ان کے مرا نام ہی آئے<br>آئے تو سہی بر سرِ الزام ہی آئے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>زیب النساء (مخفی)</h3>
+            <p>در سخن مخفی شدم مانند بو در برگ گل<br>ہر کہ دیدن میل دارد در سخن بیند مرا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>شبنم رومانی</h3>
+            <p>دل دھڑکنے کا سبب یاد آیا<br>وہ تری یاد تھی اب یاد آیا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>سلیم کوثر</h3>
+            <p>میں خیال ہوں کسی اور کا مجھے سوچتا کوئی اور ہے<br>سرِ آئینہ مرا عکس ہے پسِ آئینہ کوئی اور ہے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>افتخار عارف</h3>
+            <p>وہ جس کی دید میں لاکھوں مسرتیں پنہاں<br>وہ حسن کیا ہے اگر دیدہ ور نہ ہو پیدا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>پروین شاکر</h3>
+            <p>کیسے کہہ دوں کہ مجھے چھوڑ دیا ہے اس نے<br>بات تو سچ ہے مگر بات ہے رسوائی کی</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>احمد فراز</h3>
+            <p>دوست بن کر بھی نہیں ساتھ نبھانے والا<br>وہی انداز ہے ظالم کا زمانے والا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>جون ایلیا</h3>
+            <p>علاج یہ ہے کہ مجبور کر دیا جاؤں<br>وگرنہ یوں تو کسی کی نہیں سنی میں نے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>ناصر کاظمی</h3>
+            <p>کون اس راہ سے گزرتا ہے<br>دل یوں ہی منتظر نہیں ہوتا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>میر تقی میر</h3>
+            <p>پڑھتے پھریں گے گلیوں میں ان ریختوں کو لوگ<br>مدت رہیں گی یاد یہ باتیں ہماریاں</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>مرزا غالب</h3>
+            <p>رگوں میں دوڑتے پھرنے کے ہم نہیں قائل<br>جب آنکھ ہی سے نہ ٹپکا تو پھر لہو کیا ہے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>علامہ اقبال</h3>
+            <p>تو شاہیں ہے پرواز ہے کام تیرا<br>ترے سامنے آسماں اور بھی ہیں</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>فیض احمد فیض</h3>
+            <p>مقام فیض کوئی راہ میں جچا ہی نہیں<br>جو کوئے یار سے نکلے تو سوئے دار چلے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>حیدر علی آتش</h3>
+            <p>سفر ہے شرط مسافر نواز بہتیرے<br>ہزارہا شجرِ سایہ دار راہ میں ہے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>ابراہیم ذوق</h3>
+            <p>لائی حیات آئے قضا لے چلی چلے<br>اپنی خوشی نہ آئے نہ اپنی خوشی چلے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>مجروح سلطانپوری</h3>
+            <p>میں اکیلا ہی چلا تھا جانبِ منزل مگر<br>لوگ ساتھ آتے گئے اور کارواں بنتا گیا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>شکیب جلالی</h3>
+            <p>آ کے پتھر تو مرے صحن میں دو چار گرے<br>جتنے اس پیڑ کے پھل تھے پسِ دیوار گرے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>جگر مراد آبادی</h3>
+            <p>اک لفظِ محبت کا ادنیٰ یہ فسانا ہے<br>سمٹے تو دلِ عاشق، پھیلے تو زمانہ ہے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>بہزاد لکھنوی</h3>
+            <p>دیوانہ بنانا ہے تو دیوانہ بنا دے<br>ورنہ کہیں تقدیر تماشا نہ بنا دے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>فانی بدایونی</h3>
+            <p>اک معمہ ہے سمجھنے کا نہ سمجھانے کا<br>زندگی کاہے کو ہے خواب ہے دیوانے کا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>یاس یگانہ چنگیزی</h3>
+            <p>خودی کا نشہ چڑھا آپ میں رہا نہ گیا<br>خدا بنے تھے یگانہ مگر بنا نہ گیا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>اختر شیرانی</h3>
+            <p>اے عشق ہمیں برباد نہ کر، اے عشق نہ ہم کو یاد آیا کر<br>ہم بھولے بھٹکے راہی ہیں، تو راہ ہمیں نہ دکھلایا کر</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>مجاز لکھنوی</h3>
+            <p>بول اری او دھرتی بول، راج سنگھاسن ڈانواڈول<br>کس نے لوٹا کس نے کھایا، بول اری او دھرتی بول</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>کیفی اعظمی</h3>
+            <p>تم اتنا جو مسکرا رہے ہو<br>کیا غم ہے جس کو چھپا رہے ہو</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>شہریار</h3>
+            <p>سینے میں جلن آنکھوں میں طوفان سا کیوں ہے<br>اس شہر میں ہر شخص پریشان سا کیوں ہے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>ندا فاضلی</h3>
+            <p>ہوش والوں کو خبر کیا بے خودی کیا چیز ہے<br>عشق کیجے پھر سمجھئے زندگی کیا چیز ہے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>احمد مشتاق</h3>
+            <p>جو اُتر کے زینۂ شام سے تری چشمِ خوش میں سما گئے<br>وہی جلتے بجھتے سے مہر و مہ مرے بام و در کو سجا گئے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>ظفر اقبال</h3>
+            <p>یہاں کسی کو بھی کچھ حسبِ آرزو نہ ملا<br>کسی کو ہم نہ ملے اور ہم کو تو نہ ملا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>عبید اللہ علیم</h3>
+            <p>عزیز اتنا ہی رکھو کہ جی سنبھل جائے<br>اب اس قدر بھی نہ چاہو کہ دم نکل جائے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>جمال احسانی</h3>
+            <p>چراغ سامنے والے مکان میں بھی نہ تھا<br>یہ سانحہ مرے وہم و گمان میں بھی نہ تھا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>پیرزادہ قاسم</h3>
+            <p>اک دیا دل میں جلانا بھی بجھا بھی دینا<br>یاد کرنا بھی اسے روز بھلا بھی دینا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>محسن احسان</h3>
+            <p>دل بھی آباد ہے اک شہرِ خموشاں کی طرح<br>ہر طرف لوگ ہیں مگر عالمِ تنہائی ہے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>انور شعور</h3>
+            <p>میں جو ہوں جون ایلیا ہوں جناب<br>اس کا بے جا لحاظ کیجیے گا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>عباس تابش</h3>
+            <p>ایک مدت سے تری یاد بھی آئی نہ ہمیں<br>اور ہم بھول گئے ہوں تجھے ایسا بھی نہیں</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>عرفان صدیقی</h3>
+            <p>وہ مجھ سے ہوئے ہم کلام اللہ اللہ<br>کہاں میں کہاں یہ مقام اللہ اللہ</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>خواجہ میر درد</h3>
+            <p>جگ میں آ کر ادھر ادھر دیکھا<br>تو ہی آیا نظر جدھر دیکھا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>سراج اورنگ آبادی</h3>
+            <p>خبرِ تحیرِ عشق سن نہ جنوں رہا نہ پری رہی<br>نہ تو تو رہا نہ تو میں رہا جو رہی سو بے خبری رہی</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>ولی دکنی</h3>
+            <p>تجھ لب کی صفت لعلِ بدخشاں سوں کہوں گا<br>جادو ہیں ترے نین غزالاں سوں کہوں گا</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>شاہ نصیر</h3>
+            <p>کیا کیا نہ رنگ تیرے طلبگار لا چکے<br>گلشن میں ہم تو خونِ جگر بارہا چکے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>میر انیس</h3>
+            <p>عمر گزری ہے اسی دشت کی سیاحی میں<br>پانچویں پشت ہے شبیر کی مداحی میں</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>امیر مینائی</h3>
+            <p>خنجر چلے کسی پہ تڑپتے ہیں ہم امیرؔ<br>سارے جہاں کا درد ہمارے جگر میں ہے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>شاد عظیم آبادی</h3>
+            <p>ڈھونڈو گے اگر ملکوں ملکوں ملنے کے نہیں نایاب ہیں ہم<br>تعبیر ہے جس کی حسرت و غم اے ہم نفسو وہ خواب ہیں ہم</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>حسرت موہانی</h3>
+            <p>چپکے چپکے رات دن آنسو بہانا یاد ہے<br>ہم کو اب تک عاشقی کا وہ زمانہ یاد ہے</p>
+        </div>
+        <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>اصغر گونڈوی</h3>
+            <p>چلا جاتا ہوں ہنستا کھیلتا موجِ حوادث سے<br>اگر آسانیاں ہوں زندگی دشوار ہو جائے</p>
+        </div>
+        </div>
 
     <footer>
         <div class="footer-card">
             <p>اردو شاعری سے محبت کے ساتھ بنایا گیا</p>
             <p>© 2025 اردو شاعری. جملہ حقوق محفوظ ہیں۔</p>
             <a href="https://wa.me/+923001881920?text=Hello%20I%20have%20a%20question" target="_blank">رابطہ کریں (WhatsApp)</a>
+            <p class="akram-logo">تیار کردہ: اکرم خان</p>
         </div>
     </footer>
 
@@ -766,84 +1144,126 @@
     <script>
         // Initialize AOS
         AOS.init({
-            duration: 800, // Animation duration in ms
-            once: true,    // Whether animation should happen only once - while scrolling down
+            duration: 800,
+            once: true,
         });
 
-        // Get custom alert elements
+        // Welcome Intro Logic
+        const welcomeOverlay = document.getElementById('welcomeOverlay');
+        if (welcomeOverlay) {
+            const hideWelcomeOverlay = () => {
+                welcomeOverlay.classList.add('hidden');
+                 // No need to remove from DOM, display:none is sufficient and safer
+            };
+            setTimeout(hideWelcomeOverlay, 3500);
+            welcomeOverlay.addEventListener('click', hideWelcomeOverlay);
+        }
+
+
         const customAlertOverlay = document.getElementById('customAlertOverlay');
         const alertMessageElement = document.getElementById('alertMessage');
         const alertCloseButton = document.getElementById('alertCloseButton');
 
-        // Function to show custom alert
         function showAlert(message) {
-            alertMessageElement.innerHTML = message; // Use innerHTML to allow HTML tags like <b> or <span>
+            alertMessageElement.innerHTML = message;
             customAlertOverlay.classList.add('show');
         }
 
-        // Function to hide custom alert
         function hideAlert() {
             customAlertOverlay.classList.remove('show');
         }
 
-        // Event listener for closing the custom alert
         alertCloseButton.addEventListener('click', hideAlert);
-        // Also hide if clicking outside the alert box (on the overlay)
         customAlertOverlay.addEventListener('click', (event) => {
             if (event.target === customAlertOverlay) {
                 hideAlert();
             }
         });
 
-
-        // Theme Toggle Logic
         const themeToggleBtn = document.getElementById('themeToggle');
-        const htmlElement = document.documentElement; // Get the <html> element
+        const htmlElement = document.documentElement;
 
-        // Function to set theme
         function setTheme(theme) {
             htmlElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme); // Save preference
-            // Update icon based on theme
+            localStorage.setItem('theme', theme);
             if (theme === 'dark') {
-                themeToggleBtn.querySelector('.icon').textContent = '🌙'; // Moon for dark
+                themeToggleBtn.querySelector('.icon').textContent = '🌙';
             } else {
-                themeToggleBtn.querySelector('.icon').textContent = '☀️'; // Sun for light
+                themeToggleBtn.querySelector('.icon').textContent = '☀️';
             }
+            applyRandomPoetryCardStrokes();
         }
 
-        // Function to toggle theme
         function toggleTheme() {
             const currentTheme = htmlElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             setTheme(newTheme);
         }
 
-        // Set initial theme based on localStorage or system preference
         document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme) {
                 setTheme(savedTheme);
             } else {
-                // Check user's system preference (optional)
                 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
                     setTheme('light');
                 } else {
-                    setTheme('dark'); // Default to dark if no preference
+                    setTheme('dark');
+                }
+            }
+            // Ensure welcome text colors are set correctly based on initial theme
+            const currentTheme = htmlElement.getAttribute('data-theme') || 'dark';
+            if (welcomeOverlay) {
+                 // The gradient is now directly applied, so theme-specific color variables for welcome text are less critical
+                 // but the overlay background still uses them.
+                if (currentTheme === 'light') {
+                    welcomeOverlay.style.backgroundColor = 'var(--welcome-overlay-bg-light)';
+                } else {
+                    welcomeOverlay.style.backgroundColor = 'var(--welcome-overlay-bg-dark)';
+                }
+            }
+
+        });
+
+        themeToggleBtn.addEventListener('click', () => {
+            toggleTheme();
+            // Update welcome overlay bg if it's somehow still visible (though unlikely)
+             if (welcomeOverlay && !welcomeOverlay.classList.contains('hidden')) {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                 if (currentTheme === 'light') {
+                    welcomeOverlay.style.backgroundColor = 'var(--welcome-overlay-bg-light)';
+                } else {
+                    welcomeOverlay.style.backgroundColor = 'var(--welcome-overlay-bg-dark)';
                 }
             }
         });
 
-        // Add event listener to the toggle button
-        themeToggleBtn.addEventListener('click', toggleTheme);
 
-        // Existing click listener for poetry cards (for alert)
+        const poetryCardGradients = [
+            ['#FF00FF', '#00FFFF'], ['#FFD700', '#FF69B4'], ['#00FF00', '#00BFFF'],
+            ['#FF4500', '#FFD700'], ['#8A2BE2', '#4169E1'], ['#FF1493', '#1E90FF'],
+            ['#7FFF00', '#00FA9A'], ['#FF6347', '#FFDAB9'], ['#40E0D0', '#20B2AA'],
+            ['#EE82EE', '#DA70D6'], ['#F08080', '#F4A460'], ['#ADD8E6', '#87CEEB'],
+            ['#98FB98', '#3CB371'], ['#FFC0CB', '#FFB6C1'], ['#DDA0DD', '#BA55D3']
+        ];
+
+        function applyRandomPoetryCardStrokes() {
+            const poetryCards = document.querySelectorAll('.poetry-card');
+            poetryCards.forEach(card => {
+                const randomGradientIndex = Math.floor(Math.random() * poetryCardGradients.length);
+                const selectedGradient = poetryCardGradients[randomGradientIndex];
+                card.style.setProperty('--card-stroke-start', selectedGradient[0]);
+                card.style.setProperty('--card-stroke-end', selectedGradient[1]);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', applyRandomPoetryCardStrokes);
+        // themeToggleBtn.addEventListener('click', applyRandomPoetryCardStrokes); // Already called within setTheme
+
         document.querySelectorAll('.poetry-card').forEach(card => {
             card.addEventListener('click', (event) => {
-                // The share button class check is no longer strictly needed as share buttons are removed,
-                // but keeping it won't harm.
                 if (!event.target.classList.contains('share-button')) {
-                    showAlert('<b>!!!𝐌𝐀𝐃𝐄 𝐁𝐘 𝐀𝐊𝐑𝐀𝐌 𝐊𝐇𝐀𝐍</b>');
+                    showAlert('<b>!!𝐌𝐀𝐃𝐄 𝐁𝐘 <br>𝐀𝐊𝐑𝐀𝐌 𝐊𝐇𝐀𝐍</b>');
                 }
             });
         });
@@ -851,4 +1271,3 @@
 </body>
 </html>
 
-                                                   
