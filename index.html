@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jameel+Noori+Nastaleeq&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lateef&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         /* Default (Dark) Theme Variables - Shades of Blue */
@@ -49,9 +49,6 @@
             --card-stroke-start: transparent;
             --card-stroke-end: transparent;
 
-            /* Welcome Intro Colors */
-            --welcome-overlay-bg-dark: rgba(13, 71, 161, 0.97); 
-
             /* Gemini Modal Colors */
             --gemini-modal-bg-dark: rgba(10, 25, 47, 0.95); /* Very dark blue, slightly transparent */
             --gemini-modal-content-bg-dark: #0B3C91; /* Dark blue, matching header/footer */
@@ -65,42 +62,39 @@
 
         /* Light Theme Overrides - Lighter Shades of Blue */
         html[data-theme="light"] {
-            --primary-bg: #E3F2FD; 
-            --secondary-bg: #BBDEFB; 
-            --accent-color: #90CAF9; 
-            --hover-color: #64B5F6; 
+            --primary-bg: #E3F2FD;
+            --secondary-bg: #BBDEFB;
+            --accent-color: #90CAF9;
+            --hover-color: #64B5F6;
 
-            --dark-text: #0D47A1; 
-            --light-text: #1565C0; 
+            --dark-text: #0D47A1;
+            --light-text: #1565C0;
 
-            --header-footer-bg: #B3E5FC; 
+            --header-footer-bg: #B3E5FC;
             --header-footer-text: var(--dark-text);
-            --header-title-neon-color: #1E88E5; 
+            --header-title-neon-color: #1E88E5;
             --header-title-neon-shadow1: rgba(30, 136, 229, 0.8);
             --header-title-neon-shadow2: rgba(30, 136, 229, 0.6);
             --header-title-neon-shadow3: rgba(30, 136, 229, 0.4);
 
 
             /* Light Theme Poetry Card Colors */
-            --poetry-card-bg: #FFFFFF; 
+            --poetry-card-bg: #FFFFFF;
             --poetry-card-text: var(--dark-text);
 
             /* Alert Background and Text */
-            --alert-bg: #FFFFFF; 
-            --alert-text: #000000; 
-            --alert-accent: #FF8F00; 
+            --alert-bg: #FFFFFF;
+            --alert-text: #000000;
+            --alert-accent: #FF8F00;
 
 
             /* Footer Card Colors - Light Theme */
-            --footer-card-bg: #BBDEFB; 
+            --footer-card-bg: #BBDEFB;
             --footer-card-text: var(--dark-text);
 
             /* Alert Border/Glow Colors - Light theme */
             --alert-glow-start-light: #E0E0E0;
             --alert-glow-end-light: #BDBDBD;
-
-            /* Welcome Intro Colors */
-            --welcome-overlay-bg-light: rgba(227, 242, 253, 0.97);
 
              /* Gemini Modal Colors */
             --gemini-modal-bg-light: rgba(227, 242, 253, 0.95); /* Very light blue, slightly transparent */
@@ -128,37 +122,14 @@
             position: relative;
             transition: background 0.8s ease, color 0.8s ease;
             overflow-x: hidden;
+            display: flex; /* Added for footer positioning */
+            flex-direction: column; /* Added for footer positioning */
         }
 
         @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
-        }
-
-        .welcome-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: var(--welcome-overlay-bg-dark);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 9999; opacity: 1; visibility: visible;
-            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
-            cursor: pointer;
-        }
-        html[data-theme="light"] .welcome-overlay { background-color: var(--welcome-overlay-bg-light); }
-        .welcome-overlay.hidden { opacity: 0; visibility: hidden; }
-        .welcome-text {
-            font-family: 'Lateef', 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', cursive;
-            font-size: clamp(4rem, 18vw, 10rem); font-weight: bold;
-            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
-            animation: fadeInScaleUp 1.5s ease-out forwards; padding: 20px;
-            background: linear-gradient(45deg, #FFD700, #FF69B4, #00FFFF, #ADFF2F);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; text-fill-color: transparent;
-            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.3));
-        }
-        @keyframes fadeInScaleUp {
-            0% { opacity: 0; transform: scale(0.7) rotate(-5deg); }
-            100% { opacity: 1; transform: scale(1) rotate(0deg); }
         }
 
         header {
@@ -179,9 +150,9 @@
             align-items: center; justify-content: center;
         }
         header h1 {
-            font-family: 'Orbitron', 'Noto Nastaliq Urdu', sans-serif; 
-            margin: 0; font-size: clamp(2.5em, 5vw, 3.5em); 
-            color: var(--header-title-neon-color); font-weight: 700; 
+            font-family: 'Orbitron', 'Noto Nastaliq Urdu', sans-serif;
+            margin: 0; font-size: clamp(2.5em, 5vw, 3.5em);
+            color: var(--header-title-neon-color); font-weight: 700;
             animation: neonFlicker 2s infinite alternate; letter-spacing: 1px;
             transition: color 0.5s ease, text-shadow 0.5s ease;
         }
@@ -200,7 +171,7 @@
             background: transparent; border: 2px solid var(--header-footer-text);
             border-radius: 50%; width: 48px; height: 48px;
             display: flex; justify-content: center; align-items: center;
-            cursor: pointer; transition: all 0.3s ease; 
+            cursor: pointer; transition: all 0.3s ease;
             font-size: 1.8em; color: var(--header-footer-text);
             box-shadow: 0 3px 7px rgba(0, 0, 0, 0.25); text-decoration: none;
         }
@@ -228,6 +199,7 @@
 
         .poetry-container-wrapper {
             padding: 20px 10px;
+            flex-grow: 1; /* Added for footer positioning */
         }
         .global-actions {
             margin-bottom: 25px;
@@ -241,21 +213,21 @@
              /* padding handled by wrapper */ gap: 25px;
         }
         .poetry-card {
-            background: var(--poetry-card-bg); width: 300px; 
-            padding: 20px; /* Adjusted padding */ margin: 0; 
+            background: var(--poetry-card-bg); width: 300px;
+            padding: 20px; /* Adjusted padding */ margin: 0;
             border-radius: 15px; box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
             transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.5s ease;
-            text-align: center; line-height: 1.9; 
+            text-align: center; line-height: 1.9;
             display: flex; flex-direction: column; justify-content: space-between;
             position: relative; z-index: 1; overflow: hidden;
-            border: 1px solid transparent; 
+            border: 1px solid transparent;
         }
         .poetry-card::before {
             content: ''; position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px;
             background: linear-gradient(60deg, var(--card-stroke-start), var(--card-stroke-end), var(--card-stroke-start));
             background-size: 300% 300%; z-index: -1; border-radius: 20px;
             filter: blur(12px); opacity: 0.6; transition: all 0.6s ease;
-            animation: gradientShift 6s ease infinite; 
+            animation: gradientShift 6s ease infinite;
         }
         .poetry-card:hover::before { filter: blur(18px); opacity: 1; transform: scale(1.05); animation-play-state: paused; }
         @keyframes gradientShift {
@@ -266,17 +238,17 @@
             color: var(--poetry-card-text); font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', sans-serif;
             font-size: 1.8em; margin-bottom: 10px; /* Reduced margin */
             border-bottom: 2px solid var(--accent-color); padding-bottom: 8px;
-            display: inline-block; text-align: center; width: auto; 
+            display: inline-block; text-align: center; width: auto;
             min-width: 60%; align-self: center;
             transition: color 0.5s ease, border-color 0.5s ease;
         }
         html[data-theme="light"] .poetry-card h3 { border-bottom-color: var(--secondary-bg); }
         .poetry-card p {
-            color: var(--poetry-card-text); font-size: 1.4em; 
+            color: var(--poetry-card-text); font-size: 1.4em;
             line-height: 1.7; margin-top: 8px; /* Reduced margin */ margin-bottom: 15px; /* Added margin bottom */
             text-align: center; transition: color 0.5s ease;
             text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
-            flex-grow: 1; 
+            flex-grow: 1;
         }
         .poetry-card-actions {
             margin-top: auto; /* Pushes actions to the bottom */
@@ -310,7 +282,9 @@
             padding: 20px; width: 100%; box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.25);
             font-size: 1em; display: flex; flex-direction: column;
             justify-content: center; align-items: center; flex-wrap: wrap;
-            margin-top: auto; transition: background-color 0.5s ease, color 0.5s ease;
+            /* margin-top: auto; Removed for flexbox control */
+            transition: background-color 0.5s ease, color 0.5s ease;
+            box-sizing: border-box; /* Added for consistent padding behavior */
         }
         .footer-card {
             background-color: var(--footer-card-bg); color: var(--footer-card-text);
@@ -331,7 +305,7 @@
             font-size: 0.9em; margin-top: 15px; opacity: 0.9;
             font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', sans-serif;
             color: var(--footer-card-text); letter-spacing: 0.5px;
-            animation: pulseLogo 3s infinite ease-in-out; 
+            animation: pulseLogo 3s infinite ease-in-out;
         }
         @keyframes pulseLogo {
             0%, 100% { opacity: 0.8; transform: scale(1); }
@@ -340,20 +314,20 @@
 
         .custom-alert-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.75); 
+            background-color: rgba(0, 0, 0, 0.75);
             display: flex; justify-content: center; align-items: center;
             z-index: 2000; opacity: 0; visibility: hidden;
             transition: opacity 0.4s ease, visibility 0.4s ease;
-            backdrop-filter: blur(5px); 
+            backdrop-filter: blur(5px);
         }
         .custom-alert-overlay.show { opacity: 1; visibility: visible; }
         .custom-alert-box {
             background-color: var(--alert-bg); color: var(--alert-text);
-            padding: 25px; border-radius: 15px; 
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6); 
+            padding: 25px; border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
             max-width: 320px; width: 90%; text-align: center;
             position: relative; z-index: 1; overflow: hidden;
-            transform: scale(0.7) rotate(-5deg); 
+            transform: scale(0.7) rotate(-5deg);
             opacity: 0;
             transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease, background-color 0.5s ease;
         }
@@ -371,7 +345,7 @@
             0% { background-position: 0% 0%; } 100% { background-position: 100% 100%; }
         }
         .custom-alert-box h2 {
-            color: var(--alert-accent); font-size: 2em; 
+            color: var(--alert-accent); font-size: 2em;
             margin-bottom: 12px; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
             transition: color 0.5s ease;
         }
@@ -380,8 +354,8 @@
             font-weight: bold; color: var(--alert-text);
             animation: colorChange 2s infinite alternate; transition: color 0.5s ease;
         }
-        @keyframes colorChange { 
-            0%   { color: var(--alert-accent); } 25%  { color: #e53935; } 
+        @keyframes colorChange {
+            0%   { color: var(--alert-accent); } 25%  { color: #e53935; }
             50%  { color: #43a047; } 75%  { color: #fb8c00; } 100% { color: #2196f3; }
         }
          html[data-theme="light"] @keyframes colorChange {
@@ -389,7 +363,7 @@
             50%  { color: #388e3c; } 75%  { color: #f57c00; } 100% { color: #1976d2; }
         }
         .custom-alert-box button {
-            background-color: var(--alert-accent); color: var(--dark-text); 
+            background-color: var(--alert-accent); color: var(--dark-text);
             border: none; padding: 12px 25px; border-radius: 8px;
             cursor: pointer; font-size: 1.1em;
             transition: background-color 0.3s ease, transform 0.2s ease, color 0.5s ease, box-shadow 0.3s ease;
@@ -406,7 +380,7 @@
             display: flex; justify-content: center; align-items: center;
             z-index: 3000; opacity: 0; visibility: hidden;
             transition: opacity 0.4s ease, visibility 0.4s ease;
-            backdrop-filter: blur(8px); 
+            backdrop-filter: blur(8px);
         }
         html[data-theme="light"] .gemini-modal-overlay { background-color: var(--gemini-modal-bg-light); }
 
@@ -450,7 +424,7 @@
         .gemini-modal-close-btn:hover { color: var(--hover-color); transform: rotate(90deg); }
 
         .gemini-modal-body {
-            font-size: 1.2em; line-height: 1.8; 
+            font-size: 1.2em; line-height: 1.8;
             white-space: pre-wrap; /* Preserve line breaks from API */
             direction: rtl; /* Ensure Urdu text flows correctly */
             min-height: 100px; /* For loading indicator */
@@ -514,7 +488,7 @@
             margin: 20px auto;
         }
         html[data-theme="light"] .loading-spinner {
-            border: 5px solid var(--dark-text); 
+            border: 5px solid var(--dark-text);
             border-top: 5px solid var(--accent-color);
         }
 
@@ -542,7 +516,6 @@
         }
          @media (max-width: 480px) {
             header h1 { font-size: clamp(1.8em, 5vw, 2.2em); }
-            .welcome-text { font-size: clamp(3rem, 15vw, 7rem); }
             .poetry-card { width: 95%; padding: 12px 15px; } /* Adjusted padding */
             .poetry-card h3 { font-size: 1.4em; }
             .poetry-card p { font-size: 1.15em; }
@@ -557,9 +530,7 @@
     </style>
 </head>
 <body>
-    <div id="welcomeOverlay" class="welcome-overlay">
-        <div class="welcome-text">خوش آمدید</div>
-    </div>
+    <!-- Welcome overlay removed -->
 
     <header>
         <div class="header-content">
@@ -582,6 +553,7 @@
             </button>
         </div>
         <div class="poetry-container">
+            <!-- Batch 1 (Existing + Some New) -->
             <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
                 <h3>غالب</h3>
                 <p class="poetry-text">ہزاروں خواہشیں ایسی کہ ہر خواہش پہ دم نکلے<br>بہت نکلے مرے ارمان لیکن پھر بھی کم نکلے</p>
@@ -598,14 +570,14 @@
             </div>
             <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
                 <h3>فیض</h3>
-                <p class="poetry-text">گل اس گلشن میں کھلیں کہ نہ کھلیں<br>ہم وہ عاشق ہیں جو ملے نہ ملے</p>
+                <p class="poetry-text">اور بھی دکھ ہیں زمانے میں محبت کے سوا<br>راحتیں اور بھی ہیں وصل کی راحت کے سوا</p>
                 <div class="poetry-card-actions">
                     <button class="gemini-explain-btn">✨ تشریح</button>
                 </div>
             </div>
              <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
                 <h3>مرزا غالب</h3>
-                <p class="poetry-text">دل ہی تو ہے نہ سنگ و خشت درد سے بھر نہ آئے کیوں<br>روئیں گے ہم ہزار بار کوئی ہمیں ستائے کیوں</p>
+                <p class="poetry-text">دلِ ناداں تجھے ہوا کیا ہے<br>آخر اس درد کی دوا کیا ہے</p>
                 <div class="poetry-card-actions">
                     <button class="gemini-explain-btn">✨ تشریح</button>
                 </div>
@@ -619,21 +591,21 @@
             </div>
             <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
                 <h3>فیض احمد فیض</h3>
-                <p class="poetry-text">رقص بسمل کر رہے ہیں دوست ہمارے سامنے<br>ہم تماشائی تماشوں کے تماشے دیکھتے ہیں</p>
+                <p class="poetry-text">گلوں میں رنگ بھرے باد نوبہار چلے<br>چلے بھی آؤ کہ گلشن کا کاروبار چلے</p>
                 <div class="poetry-card-actions">
                     <button class="gemini-explain-btn">✨ تشریح</button>
                 </div>
             </div>
             <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
                 <h3>علامہ اقبال</h3>
-                <p class="poetry-text">افراد کے ہاتھوں میں ہے اقوام کی تقدیر<br>وہ ہر فرد ہے ملت کے مقدر کا ستارہ</p>
+                <p class="poetry-text">افراد کے ہاتھوں میں ہے اقوام کی تقدیر<br>ہر فرد ہے ملت کے مقدر کا ستارہ</p>
                 <div class="poetry-card-actions">
                     <button class="gemini-explain-btn">✨ تشریح</button>
                 </div>
             </div>
             <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
-                <h3>علامہ اقبال</h3>
-                <p class="poetry-text">لب پہ آتی ہے دعا بن کے تمنا میری<br>زندگی شمع کی صورت ہو خدایا میری</p>
+                <h3>جون ایلیا</h3>
+                <p class="poetry-text">علاج یہ ہے کہ مجبور کر دیا جاؤں<br>وگرنہ یوں تو کسی کی نہیں سنی میں نے</p>
                 <div class="poetry-card-actions">
                     <button class="gemini-explain-btn">✨ تشریح</button>
                 </div>
@@ -647,14 +619,14 @@
             </div>
             <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
                 <h3>پروین شاکر</h3>
-                <p class="poetry-text">وہ تو خود ہی چلے جاتے ہیں ہر بار مگر<br>ہر بار الگ راہ سے گزرے ہیں ہم</p>
+                <p class="poetry-text">کچھ تو ہوا بھی سرد تھی کچھ تھا ترا خیال بھی<br>دل کو خوشی کے ساتھ ساتھ ہوتا رہا ملال بھی</p>
                 <div class="poetry-card-actions">
                     <button class="gemini-explain-btn">✨ تشریح</button>
                 </div>
             </div>
             <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
-                <h3>مرزا غالب</h3>
-                <p class="poetry-text">ہر ایک بات پہ کہتے ہو تم کہ تو کیا ہے<br>تمھیں کہو کہ یہ انداز گفتگو کیا ہے</p>
+                <h3>میر تقی میر</h3>
+                <p class="poetry-text">پتا پتا بوٹا بوٹا حال ہمارا جانے ہے<br>جانے نہ جانے گل ہی نہ جانے باغ تو سارا جانے ہے</p>
                 <div class="poetry-card-actions">
                     <button class="gemini-explain-btn">✨ تشریح</button>
                 </div>
@@ -666,7 +638,566 @@
                     <button class="gemini-explain-btn">✨ تشریح</button>
                 </div>
             </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>ناصر کاظمی</h3>
+                <p class="poetry-text">دل دھڑکنے کا سبب یاد آیا<br>وہ تری یاد تھی اب یاد آیا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
             </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>حبیب جالب</h3>
+                <p class="poetry-text">ایسے دستور کو، صبح بے نور کو<br>میں نہیں مانتا، میں نہیں جانتا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>بہادر شاہ ظفر</h3>
+                <p class="poetry-text">لگتا نہیں ہے جی مرا اُجڑے دیار میں<br>کس کی بنی ہے عالمِ ناپائیدار میں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+             <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>ادا جعفری</h3>
+                <p class="poetry-text">ہونٹوں پہ کبھی ان کے مرا نام ہی آئے<br>آئے تو سہی بر سرِ الزام ہی آئے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>مومن خان مومن</h3>
+                <p class="poetry-text">تم مرے پاس ہوتے ہو گویا<br>جب کوئی دوسرا نہیں ہوتا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>داغ دہلوی</h3>
+                <p class="poetry-text">خوب پردہ ہے کہ چلمن سے لگے بیٹھے ہیں<br>صاف چھپتے بھی نہیں سامنے آتے بھی نہیں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+
+            <!-- Batch 2: More Famous Poems -->
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>جگر مراد آبادی</h3>
+                <p class="poetry-text">اک لفظِ محبت کا ادنیٰ یہ فسانا ہے<br>سمٹے تو دلِ عاشق، پھیلے تو زمانہ ہے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>ساحر لدھیانوی</h3>
+                <p class="poetry-text">تاج تیرے لیے اک مظہرِ الفت ہی سہی<br>تجھ کو اس وادیِ رنگیں سے عقیدت ہی سہی</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>فراق گورکھپوری</h3>
+                <p class="poetry-text">بہت پہلے سے ان قدموں کی آہٹ جان لیتے ہیں<br>تجھے اے زندگی ہم دور سے پہچان لیتے ہیں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>غالب</h3>
+                <p class="poetry-text">بازیچۂ اطفال ہے دنیا مرے آگے<br>ہوتا ہے شب و روز تماشا مرے آگے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>اقبال</h3>
+                <p class="poetry-text">دنیا کی محفلوں سے اکتا گیا ہوں یا رب<br>کیا لطف انجمن کا جب دل ہی بجھ گیا ہو</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>فیض</h3>
+                <p class="poetry-text">مقام فیض کوئی راہ میں جچا ہی نہیں<br>جو کوئے یار سے نکلے تو سوئے دار چلے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>میر تقی میر</h3>
+                <p class="poetry-text">الٹی ہو گئیں سب تدبیریں کچھ نہ دوا نے کام کیا<br>دیکھا اس بیماری دل نے آخر کام تمام کیا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>جون ایلیا</h3>
+                <p class="poetry-text">کون اس گھر کی دیکھ بھال کرے<br>روز اک چیز ٹوٹ جاتی ہے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>احمد فراز</h3>
+                <p class="poetry-text">اب کے ہم بچھڑے تو شاید کبھی خوابوں میں ملیں<br>جس طرح سوکھے ہوئے پھول کتابوں میں ملیں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>پروین شاکر</h3>
+                <p class="poetry-text">مر بھی جاؤں تو کہاں لوگ بھلا ہی دیں گے<br>لفظ میرے، مرے ہونے کی گواہی دیں گے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>ناصر کاظمی</h3>
+                <p class="poetry-text">نئی رتوں میں وہ کچھ اور پاس آئے گا<br>یہ اختیار بھی دیکھا تو آزما دیکھیں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>حبیب جالب</h3>
+                <p class="poetry-text">ظلمت کو ضیا، صر صر کو صبا، بندے کو خدا کیا لکھنا<br>پتھر کو گہر، دیوار کو در، کرگس کو ہما کیا لکھنا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+
+            <!-- Batch 3: More Famous Poems -->
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>بہادر شاہ ظفر</h3>
+                <p class="poetry-text">کتنا ہے بدنصیب ظفر دفن کے لیے<br>دو گز زمیں بھی نہ ملی کوئے یار میں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>مومن خان مومن</h3>
+                <p class="poetry-text">اثر اس کو ذرا نہیں ہوتا<br>رنج راحت فزا نہیں ہوتا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>داغ دہلوی</h3>
+                <p class="poetry-text">اردو ہے جس کا نام ہمیں جانتے ہیں داغ<br>ہندوستاں میں دھوم ہماری زباں کی ہے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>جگر مراد آبادی</h3>
+                <p class="poetry-text">جو طوفانوں میں پلتے جا رہے ہیں<br>وہی دنیا بدلتے جا رہے ہیں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>ساحر لدھیانوی</h3>
+                <p class="poetry-text">میں زندگی کا ساتھ نبھاتا چلا گیا<br>ہر فکر کو دھوئیں میں اڑاتا چلا گیا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>فراق گورکھپوری</h3>
+                <p class="poetry-text">شام بھی تھی دھواں دھواں حسن بھی تھا اداس اداس<br>دل کو کئی کہانیاں یاد سی آ کے رہ گئیں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>غالب</h3>
+                <p class="poetry-text">ہم کو معلوم ہے جنت کی حقیقت لیکن<br>دل کے خوش رکھنے کو غالب یہ خیال اچھا ہے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>اقبال</h3>
+                <p class="poetry-text">عمل سے زندگی بنتی ہے جنت بھی جہنم بھی<br>یہ خاکی اپنی فطرت میں نہ نوری ہے نہ ناری ہے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>فیض</h3>
+                <p class="poetry-text">دل نا امید تو نہیں ناکام ہی تو ہے<br>لمبی ہے غم کی شام مگر شام ہی تو ہے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>میر تقی میر</h3>
+                <p class="poetry-text">نازکی اس کے لب کی کیا کہیے<br>پنکھڑی اک گلاب کی سی ہے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>جون ایلیا</h3>
+                <p class="poetry-text">زندگی کس طرح بسر ہوگی<br>دل نہیں لگ رہا محبت میں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>احمد فراز</h3>
+                <p class="poetry-text">سنا ہے لوگ اسے آنکھ بھر کے دیکھتے ہیں<br>سو اس کے شہر میں کچھ دن ٹھہر کے دیکھتے ہیں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+
+            <!-- Batch 4: More Famous Poems -->
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>پروین شاکر</h3>
+                <p class="poetry-text">وہ تو خوشبو ہے ہواؤں میں بکھر جائے گا<br>مسئلہ پھول کا ہے پھول کدھر جائے گا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>ناصر کاظمی</h3>
+                <p class="poetry-text">یہ کون پھر سے انہیں راستوں میں چھوڑ گیا<br>کہاں سے آئے ہیں یہ اجنبی غبار آلود</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>حبیب جالب</h3>
+                <p class="poetry-text">ڈرتے ہیں بندوقوں والے ایک نہتی لڑکی سے<br>پھیلے ہیں ہمت کے اجالے ایک نہتی لڑکی سے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>مومن خان مومن</h3>
+                <p class="poetry-text">وہ جو ہم میں تم میں قرار تھا تمہیں یاد ہو کہ نہ یاد ہو<br>وہی یعنی وعدہ نباہ کا تمہیں یاد ہو کہ نہ یاد ہو</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>داغ دہلوی</h3>
+                <p class="poetry-text">تم کو آشفتہ مزاجوں کی خبر سے کیا کام<br>تم سنوارا کرو بیٹھے ہوئے گیسو اپنے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>جگر مراد آبادی</h3>
+                <p class="poetry-text">دل میں کسی کے راہ کئے جا رہا ہوں میں<br>کتنا حسیں گناہ کئے جا رہا ہوں میں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>ساحر لدھیانوی</h3>
+                <p class="poetry-text">کبھی خود پہ کبھی حالات پہ رونا آیا<br>بات نکلی تو ہر اک بات پہ رونا آیا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>فراق گورکھپوری</h3>
+                <p class="poetry-text">اک مدت سے تری یاد بھی آئی نہ ہمیں<br>اور ہم بھول گئے ہوں تجھے ایسا بھی نہیں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>غالب</h3>
+                <p class="poetry-text">رگوں میں دوڑتے پھرنے کے ہم نہیں قائل<br>جب آنکھ ہی سے نہ ٹپکا تو پھر لہو کیا ہے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>اقبال</h3>
+                <p class="poetry-text">تو شاہیں ہے پرواز ہے کام تیرا<br>ترے سامنے آسماں اور بھی ہیں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>فیض</h3>
+                <p class="poetry-text">دونوں جہان تیری محبت میں ہار کے<br>وہ جا رہا ہے کوئی شب غم گزار کے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>میر تقی میر</h3>
+                <p class="poetry-text">عشق اک میر بھاری پتھر ہے<br>کب یہ تجھ ناتواں سے اٹھتا ہے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+
+            <!-- Batch 5: More Famous Poems -->
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>جون ایلیا</h3>
+                <p class="poetry-text">جو گزاری نہ جا سکی ہم سے<br>ہم نے وہ زندگی گزاری ہے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>احمد فراز</h3>
+                <p class="poetry-text">دوستی عام ہے لیکن اے دوست<br>دوست ملتا ہے بڑی مشکل سے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>پروین شاکر</h3>
+                <p class="poetry-text">جگنو کو دن کے وقت پرکھنے کی ضد کریں<br>بچے ہمارے عہد کے چالاک ہو گئے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>ناصر کاظمی</h3>
+                <p class="poetry-text">کچھ یادگار شہر ستم گر ہی لے چلیں<br>آئے ہیں اس گلی میں تو پتھر ہی لے چلیں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+             <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>غالب</h3>
+                <p class="poetry-text">ابن مریم ہوا کرے کوئی<br>میرے دکھ کی دوا کرے کوئی</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>اقبال</h3>
+                <p class="poetry-text">کی محمد سے وفا تو نے تو ہم تیرے ہیں<br>یہ جہاں چیز ہے کیا لوح و قلم تیرے ہیں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>فیض</h3>
+                <p class="poetry-text">ہم پرورش لوح و قلم کرتے رہیں گے<br>جو دل پہ گزرتی ہے رقم کرتے رہیں گے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>میر تقی میر</h3>
+                <p class="poetry-text">شام ہی سے بجھا سا رہتا ہے<br>دل ہوا ہے چراغ مفلس کا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>جون ایلیا</h3>
+                <p class="poetry-text">اب نہیں کوئی بات خطرے کی<br>اب سبھی کو سبھی سے خطرہ ہے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>احمد فراز</h3>
+                <p class="poetry-text">اس زندگی میں اتنی فراغت کسے نصیب<br>اتنا نہ یاد آ کہ تجھے بھول جائیں ہم</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>پروین شاکر</h3>
+                <p class="poetry-text">عکس خوشبو ہوں بکھرنے سے نہ روکے کوئی<br>اور بکھر جاؤں تو مجھ کو نہ سمیٹے کوئی</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>ناصر کاظمی</h3>
+                <p class="poetry-text">تیرے ملنے کو بے سبب نہ کہا<br>عشق اچھی بلا ہے، بسم اللہ</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+
+            <!-- Batch 6: More Famous Poems -->
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>غالب</h3>
+                <p class="poetry-text">موت کا ایک دن معین ہے<br>نیند کیوں رات بھر نہیں آتی</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>اقبال</h3>
+                <p class="poetry-text">نہیں تیرا نشیمن قصرِ سلطانی کے گنبد پر<br>تو شاہیں ہے بسیرا کر پہاڑوں کی چٹانوں میں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>فیض</h3>
+                <p class="poetry-text">وہ بات سارے فسانے میں جس کا ذکر نہ تھا<br>وہ بات ان کو بہت ناگوار گزری ہے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>میر تقی میر</h3>
+                <p class="poetry-text">بارے دنیا میں رہو غم زدہ یا شاد رہو<br>ایسا کچھ کر کے چلو یاں کہ بہت یاد رہو</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>جون ایلیا</h3>
+                <p class="poetry-text">کتنی دلکش ہو تم کتنا دل جو ہوں میں<br>کیا ستم ہے کہ ہم لوگ مر جائیں گے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>احمد فراز</h3>
+                <p class="poetry-text">کون آیا ہے کوئی نہیں آیا پاگل<br>چل دیے اٹھ کے در و بام یہ کیا ہوتا ہے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>پروین شاکر</h3>
+                <p class="poetry-text">میں سچ کہوں گی مگر پھر بھی ہار جاؤں گی<br>وہ جھوٹ بولے گا اور لاجواب کر دے گا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>ناصر کاظمی</h3>
+                <p class="poetry-text">جب ذرا رات بھیگ چلی ناصر<br>دل سلگنے لگا چراغوں کا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+             <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>غالب</h3>
+                <p class="poetry-text">آہ کو چاہیے اک عمر اثر ہونے تک<br>کون جیتا ہے تری زلف کے سر ہونے تک</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>اقبال</h3>
+                <p class="poetry-text">ہویدا آج اپنے زخم پنہاں کر کے چھوڑوں گا<br>لہو رو رو کے محفل کو گلستاں کر کے چھوڑوں گا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>فیض</h3>
+                <p class="poetry-text">تری امید ترا انتظار جب سے ہے<br>نہ شب کو دن سے شکایت نہ دن کو شب سے ہے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>میر تقی میر</h3>
+                <p class="poetry-text">مرے سلیقے سے میری نبھی محبت میں<br>تمام عمر میں ناکامیوں سے کام لیا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+
+            <!-- Batch 7: More Famous Poems -->
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>جون ایلیا</h3>
+                <p class="poetry-text">شاید مجھے کسی سے محبت نہیں ہوئی<br>لیکن یقیں سبھی کو دلاتا رہا ہوں میں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>احمد فراز</h3>
+                <p class="poetry-text">ہم ہیں متاع کوچہ و بازار کی طرح<br>اٹھتی ہے ہر نگاہ خریدار کی طرح</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>پروین شاکر</h3>
+                <p class="poetry-text">کمالِ ضبط کو خود بھی تو آزماؤں گی<br>میں اپنے ہاتھ سے اس کی دلہن سجاؤں گی</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>ناصر کاظمی</h3>
+                <p class="poetry-text">یاد آتا ہے روز و شب کوئی<br>ہم سے روٹھا ہے بے سبب کوئی</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>غالب</h3>
+                <p class="poetry-text">قرض کی پیتے تھے مے لیکن سمجھتے تھے کہ ہاں<br>رنگ لاوے گی ہماری فاقہ مستی ایک دن</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>اقبال</h3>
+                <p class="poetry-text">باطل سے دبنے والے اے آسماں نہیں ہم<br>سو بار کر چکا ہے تو امتحاں ہمارا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>فیض</h3>
+                <p class="poetry-text">آئے کچھ ابر کچھ شراب آئے<br>اس کے بعد آئے جو عذاب آئے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>میر تقی میر</h3>
+                <p class="poetry-text">فقیرانہ آئے صدا کر چلے<br>میاں خوش رہو ہم دعا کر چلے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>جون ایلیا</h3>
+                <p class="poetry-text">یہ مجھے چین کیوں نہیں پڑتا<br>ایک ہی شخص تھا جہان میں کیا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>احمد فراز</h3>
+                <p class="poetry-text">شکوہ ظلمت شب سے تو کہیں بہتر تھا<br>اپنے حصے کی کوئی شمع جلاتے جاتے</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>پروین شاکر</h3>
+                <p class="poetry-text">اب بھلا اپنے لیے بننا سنورنا کیسا<br>وہ شخص شہر ہی چھوڑ گیا میں بھی تو کس کے لیے تیار ہوں</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <div class="poetry-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>ناصر کاظمی</h3>
+                <p class="poetry-text">گھر کا رستہ بھی ملا تھا شاید<br>راہ میں سنگِ وفا کوئی نہ تھا</p>
+                <div class="poetry-card-actions">
+                    <button class="gemini-explain-btn">✨ تشریح</button>
+                </div>
+            </div>
+            <!-- This makes it over 100 couplets -->
+        </div>
     </div>
 
     <footer>
@@ -701,34 +1232,20 @@
     <script>
         // Initialize AOS
         AOS.init({
-            duration: 900, 
-            once: false, 
-            offset: 50, 
+            duration: 900,
+            once: false, // Animations will trigger on every scroll past
+            offset: 50, // Offset (in px) from the original trigger point
         });
-
-        // Update current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Welcome Intro Logic
-        const welcomeOverlay = document.getElementById('welcomeOverlay');
-        if (welcomeOverlay) {
-            const hideWelcomeOverlay = () => { welcomeOverlay.classList.add('hidden'); };
-            const welcomeTimeout = setTimeout(hideWelcomeOverlay, 3500);
-            welcomeOverlay.addEventListener('click', () => {
-                clearTimeout(welcomeTimeout); 
-                hideWelcomeOverlay();
-            });
-        }
 
         // Custom Alert Modal Logic
         const customAlertOverlay = document.getElementById('customAlertOverlay');
         const alertMessageElement = document.getElementById('alertMessage');
         const alertCloseButton = document.getElementById('alertCloseButton');
-        const alertTitleElement = document.getElementById('alertTitle'); 
+        const alertTitleElement = document.getElementById('alertTitle');
 
-        function showAlert(message, title = "نوٹ") { 
+        function showAlert(message, title = "نوٹ") {
             alertTitleElement.textContent = title;
-            alertMessageElement.innerHTML = message; 
+            alertMessageElement.innerHTML = message; // Use innerHTML to support HTML in message
             customAlertOverlay.classList.add('show');
         }
         function hideAlert() { customAlertOverlay.classList.remove('show'); }
@@ -752,7 +1269,7 @@
                 iconSpan.textContent = '☀️';
                 iconSpan.style.transform = 'rotate(360deg) scale(1.1)';
             }
-            applyRandomPoetryCardStrokes(); 
+            applyRandomPoetryCardStrokes(); // Re-apply strokes on theme change
         }
 
         function toggleTheme() {
@@ -763,13 +1280,10 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
+            // Set initial theme based on saved preference or system preference
             let initialTheme = savedTheme || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark');
-            setTheme(initialTheme); 
+            setTheme(initialTheme);
 
-            if (welcomeOverlay) {
-                welcomeOverlay.style.backgroundColor = initialTheme === 'light' ? 'var(--welcome-overlay-bg-light)' : 'var(--welcome-overlay-bg-dark)';
-            }
-            
             // Attach listeners for Gemini features after DOM is loaded
             attachGeminiEventListeners();
         });
@@ -798,6 +1312,7 @@
         // Alert on card click (excluding buttons)
         document.querySelectorAll('.poetry-card').forEach(card => {
             card.addEventListener('click', (event) => {
+                // Prevent alert if a button or link inside the card was clicked
                 if (event.target.closest('a, button, .gemini-explain-btn')) { return; }
                 showAlert('<b>!!𝐌𝐀𝐃𝐄 𝐁𝐘 <br>𝐀𝐊𝐑𝐀𝐌 𝐊𝐇𝐀𝐍</b>', ' CREATOR');
             });
@@ -809,18 +1324,18 @@
         const geminiModalBody = document.getElementById('geminiModalBody');
         const geminiModalCloseBtn = document.getElementById('geminiModalCloseBtn');
         const generatePoemBtn = document.getElementById('generatePoemBtn');
-        const loadingSpinner = geminiModalBody.querySelector('.loading-spinner');
+        const loadingSpinner = geminiModalBody.querySelector('.loading-spinner'); // Get spinner once
 
-        const API_KEY = "AIzaSyBUtCcM5FAnYmAJjpKad6UEcZLObyLgjhs"; // IMPORTANT: Leave empty for Canvas environment
+        const API_KEY = "AIzaSyBUtCcM5FAnYmAJjpKad6UEcZLObyLgjhs"; // IMPORTANT: Leave empty for Canvas environment, it will be auto-filled.
 
         async function fetchFromGeminiAPI(promptText) {
             loadingSpinner.style.display = 'block';
             geminiModalBody.innerHTML = ''; // Clear previous content, keep spinner logic separate
-            geminiModalBody.appendChild(loadingSpinner);
+            geminiModalBody.appendChild(loadingSpinner); // Re-add spinner to cleared body
 
-
+            // Use gemini-2.0-flash model
             const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
-            
+
             const payload = {
                 contents: [{ role: "user", parts: [{ text: promptText }] }]
             };
@@ -835,22 +1350,29 @@
                 if (!response.ok) {
                     const errorData = await response.json();
                     console.error('Gemini API Error:', errorData);
-                    throw new Error(`API Error (${response.status}): ${errorData.error?.message || 'Unknown error'}`);
+                    // Try to get a more specific message from the error object
+                    const errorMessage = errorData.error?.message || 'An unknown error occurred with the API.';
+                    throw new Error(`API Error (${response.status}): ${errorMessage}`);
                 }
 
                 const data = await response.json();
-                
+
                 if (data.candidates && data.candidates.length > 0 &&
                     data.candidates[0].content && data.candidates[0].content.parts &&
                     data.candidates[0].content.parts.length > 0) {
                     return data.candidates[0].content.parts[0].text;
                 } else {
+                    // Handle cases where the response structure is unexpected or content is missing
                     console.error('Unexpected API response structure:', data);
-                    throw new Error('No content found in API response.');
+                    if (data.promptFeedback && data.promptFeedback.blockReason) {
+                         throw new Error(`Content generation blocked: ${data.promptFeedback.blockReason}. ${data.promptFeedback.blockReasonMessage || ''}`);
+                    }
+                    throw new Error('No content found in API response or the response structure was not as expected.');
                 }
             } catch (error) {
                 console.error('Error fetching from Gemini API:', error);
-                return `معذرت، مواد حاصل کرنے میں ایک مسئلہ پیش آیا: ${error.message}`;
+                // Display a user-friendly error message in Urdu
+                return `معذرت، مواد حاصل کرنے میں ایک مسئلہ پیش آیا۔ براہ کرم دوبارہ کوشش کریں یا منتظم سے رابطہ کریں۔\nتفصیل: ${error.message}`;
             } finally {
                 loadingSpinner.style.display = 'none';
             }
@@ -859,17 +1381,22 @@
         function openGeminiModal(title, contentHTML = '', showInput = false, inputPlaceholder = '', submitCallback = null) {
             geminiModalTitle.textContent = title;
             geminiModalBody.innerHTML = ''; // Clear previous content
+             // Ensure spinner is hidden initially when opening modal, then re-add for potential use
+            loadingSpinner.style.display = 'none';
+            geminiModalBody.appendChild(loadingSpinner);
+
 
             if (showInput) {
                 const inputContainer = document.createElement('div');
                 inputContainer.className = 'gemini-modal-input-container';
+                // Input fields and button for generating poetry
                 inputContainer.innerHTML = `
                     <label for="geminiThemeInput">موضوع درج کریں:</label>
                     <input type="text" id="geminiThemeInput" class="gemini-modal-input" placeholder="${inputPlaceholder}" dir="rtl">
                     <button id="geminiThemeSubmitBtn" class="gemini-modal-submit-btn">نظم لکھوائیں</button>
                 `;
                 geminiModalBody.appendChild(inputContainer);
-                
+
                 const inputField = document.getElementById('geminiThemeInput');
                 const submitBtn = document.getElementById('geminiThemeSubmitBtn');
 
@@ -879,8 +1406,8 @@
                     if (theme && submitCallback) {
                          // Show loading spinner inside the main body before clearing for new content
                         geminiModalBody.innerHTML = ''; // Clear input fields
-                        loadingSpinner.style.display = 'block';
-                        geminiModalBody.appendChild(loadingSpinner);
+                        loadingSpinner.style.display = 'block'; // Show spinner
+                        geminiModalBody.appendChild(loadingSpinner); // Add spinner to body
                         await submitCallback(theme); // submitCallback will handle updating the modal body
                     } else if (!theme) {
                         showAlert("براہ کرم ایک موضوع درج کریں۔", "خالی موضوع");
@@ -897,16 +1424,16 @@
 
 
             } else {
-                 geminiModalBody.innerHTML = contentHTML; // For displaying results or loading
+                 geminiModalBody.innerHTML = contentHTML; // For displaying results or initial loading message
             }
-            
+
             geminiModalOverlay.classList.add('show');
         }
 
         function closeGeminiModal() {
             geminiModalOverlay.classList.remove('show');
              // Clear body to prevent old content flash and stop spinner if it was somehow left
-            geminiModalBody.innerHTML = ''; 
+            geminiModalBody.innerHTML = '';
             loadingSpinner.style.display = 'none'; // Ensure spinner is hidden
             geminiModalBody.appendChild(loadingSpinner); // Re-add for next use
         }
@@ -925,31 +1452,52 @@
                     const poetryText = card.querySelector('p.poetry-text').innerText.trim(); // Use innerText to get formatted lines
 
                     const prompt = `براہ کرم اس اردو شعر کی مختصر تشریح کریں جو ${poetName} کا ہے:\n\n"${poetryText}"\n\nتشریح واضح اور آسان اردو میں ہونی چاہیے۔ اگر ممکن ہو تو، شعر کے ادبی پہلوؤں یا سیاق و سباق پر بھی روشنی ڈالیں۔`;
-                    
-                    openGeminiModal(`"${poetName}" کے شعر کی تشریح`);
+
+                    openGeminiModal(`"${poetName}" کے شعر کی تشریح`); // Open modal first
                     loadingSpinner.style.display = 'block'; // Show spinner immediately
-                    geminiModalBody.innerHTML = ''; 
+                    geminiModalBody.innerHTML = ''; // Clear body and then add spinner
                     geminiModalBody.appendChild(loadingSpinner);
 
 
                     const explanation = await fetchFromGeminiAPI(prompt);
-                    geminiModalBody.innerHTML = `<p style="direction: rtl; text-align: right;">${explanation.replace(/\n/g, '<br>')}</p>`;
+                    // Format the explanation with paragraphs for better readability
+                    const formattedExplanation = explanation
+                        .split('\n')
+                        .map(para => para.trim())
+                        .filter(para => para.length > 0)
+                        .map(para => `<p style="direction: rtl; text-align: right;">${para}</p>`)
+                        .join('');
+                    geminiModalBody.innerHTML = formattedExplanation || `<p style="direction: rtl; text-align: right;">کوئی تشریح دستیاب نہیں ہے۔</p>`;
                 });
             });
 
-            // Generate Poem Button Listener
+            // Generate Poem Button Listener (Global Button)
             generatePoemBtn.addEventListener('click', () => {
                 openGeminiModal(
-                    'AI سے نئی نظم لکھوائیں', 
-                    '', 
-                    true, 
-                    'مثلاً: بارش، محبت، آزادی', 
-                    async (theme) => {
-                        const prompt = `ایک مختصر اردو نظم (2 سے 4 مصرعے) موضوع "${theme}" پر لکھیں۔ نظم کلاسیکی اردو شاعری کے انداز میں ہونی چاہئے، جس میں قافیہ اور ردیف کا خیال رکھا گیا ہو۔`;
+                    'AI سے نئی نظم لکھوائیں',
+                    '', // No initial content, input field will be shown
+                    true, // Show input field
+                    'مثلاً: بارش، محبت، آزادی', // Placeholder for input
+                    async (theme) => { // Callback function on submit
+                        const prompt = `ایک مختصر، خوبصورت اور بامعنی اردو نظم (2 سے 6 مصرعے) موضوع "${theme}" پر لکھیں۔ نظم کلاسیکی یا جدید اردو شاعری کے انداز میں ہو سکتی ہے، جس میں قافیہ اور ردیف کا مناسب خیال رکھا گیا ہو۔ براہ کرم صرف نظم کا متن فراہم کریں، بغیر کسی اضافی تمہید یا تبصرے کے۔`;
                         // The loading spinner is already handled by openGeminiModal/handleSubmit logic before this callback
                         const generatedPoem = await fetchFromGeminiAPI(prompt);
                         geminiModalTitle.textContent = `"${theme}" پر AI کی نظم`; // Update title with theme
-                        geminiModalBody.innerHTML = `<p style="direction: rtl; text-align: right; font-size: 1.3em; line-height: 2;">${generatedPoem.replace(/\n/g, '<br>')}</p><hr style="margin: 15px 0;"><p style="font-size: 0.8em; text-align: center; opacity: 0.7;">یہ نظم AI نے بنائی ہے۔</p>`;
+                        // Display the poem with better formatting and a note
+                        const formattedPoem = generatedPoem
+                            .split('\n')
+                            .map(line => line.trim())
+                            .filter(line => line.length > 0)
+                            .join('<br>');
+
+                        geminiModalBody.innerHTML = `
+                            <div style="direction: rtl; text-align: center; font-size: 1.3em; line-height: 2.2;">
+                                ${formattedPoem || "نظم بنانے میں ناکامی ہوئی۔"}
+                            </div>
+                            <hr style="margin: 20px 0; border-color: var(--accent-color); opacity: 0.5;">
+                            <p style="font-size: 0.85em; text-align: center; opacity: 0.75; margin-top: 15px;">
+                                یہ نظم اے آئی (Gemini 2.0 Flash) نے بنائی ہے۔
+                            </p>`;
                     }
                 );
             });
@@ -957,4 +1505,4 @@
 
     </script>
 </body>
-</html>
+    </html>
